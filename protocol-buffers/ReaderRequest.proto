@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package ReaderRequest;
+
+enum Command{
+    Cmd_Err = 0;
+    Cmd_SCard_Establish_Context = 101;
+    Cmd_SCard_Reader_List = 102;
+    Cmd_SCard_Connect_Card = 103;
+    Cmd_SCard_Disconnect_Card = 104;
+    Cmd_SCard_Transmit = 105;
+    
+    Cmd_MI_Get_UID = 201;
+    Cmd_MI_Load_Key = 202;
+    Cmd_MI_Authentication = 203;
+    Cmd_Mi_Read_Block = 204;
+    Cmd_Mi_Write_Block = 205;
+    Cmd_Mi_Decrement = 206;
+    Cmd_Mi_Increment = 207;
+    Cmd_Mi_Restore = 208;
+    Cmd_Mi_HALT = 209;
+}
+
+message ReaderRequest {
+    Command cmd = 1;
+    int32 msgCnt = 2;
+    
+    repeated string result = 3;
+}
