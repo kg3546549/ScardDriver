@@ -26,12 +26,119 @@ namespace _pbi = ::google::protobuf::internal;
 namespace _fl = ::google::protobuf::internal::field_layout;
 namespace ReaderRequest {
 
+inline constexpr SCard_Transmit_Data::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : data_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SCard_Transmit_Data::SCard_Transmit_Data(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct SCard_Transmit_DataDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SCard_Transmit_DataDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SCard_Transmit_DataDefaultTypeInternal() {}
+  union {
+    SCard_Transmit_Data _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SCard_Transmit_DataDefaultTypeInternal _SCard_Transmit_Data_default_instance_;
+
+inline constexpr SCard_Reader_List_Data::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : data_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SCard_Reader_List_Data::SCard_Reader_List_Data(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct SCard_Reader_List_DataDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SCard_Reader_List_DataDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SCard_Reader_List_DataDefaultTypeInternal() {}
+  union {
+    SCard_Reader_List_Data _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SCard_Reader_List_DataDefaultTypeInternal _SCard_Reader_List_Data_default_instance_;
+
+inline constexpr MI_Data::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : data_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        length_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR MI_Data::MI_Data(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct MI_DataDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR MI_DataDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~MI_DataDefaultTypeInternal() {}
+  union {
+    MI_Data _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MI_DataDefaultTypeInternal _MI_Data_default_instance_;
+
+inline constexpr Default_Data::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : data_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Default_Data::Default_Data(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct Default_DataDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR Default_DataDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~Default_DataDefaultTypeInternal() {}
+  union {
+    Default_Data _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Default_DataDefaultTypeInternal _Default_Data_default_instance_;
+
 inline constexpr ReaderRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : result_{},
-        cmd_{static_cast< ::ReaderRequest::Command >(0)},
+      : cmd_{static_cast< ::ReaderRequest::Command >(0)},
         msgcnt_{0},
-        _cached_size_{0} {}
+        result_{static_cast< ::ReaderRequest::Result >(0)},
+        request_data_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR ReaderRequest::ReaderRequest(::_pbi::ConstantInitialized)
@@ -53,16 +160,53 @@ struct ReaderRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReaderRequestDefaultTypeInternal _ReaderRequest_default_instance_;
 }  // namespace ReaderRequest
-static const ::_pb::EnumDescriptor* file_level_enum_descriptors_ReaderRequest_2eproto[1];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_ReaderRequest_2eproto[3];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_ReaderRequest_2eproto = nullptr;
 const ::uint32_t
     TableStruct_ReaderRequest_2eproto::offsets[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
         protodesc_cold) = {
         ~0u,  // no _has_bits_
-        PROTOBUF_FIELD_OFFSET(::ReaderRequest::ReaderRequest, _internal_metadata_),
+        PROTOBUF_FIELD_OFFSET(::ReaderRequest::Default_Data, _internal_metadata_),
         ~0u,  // no _extensions_
         ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::ReaderRequest::Default_Data, _impl_.data_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::ReaderRequest::SCard_Reader_List_Data, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::ReaderRequest::SCard_Reader_List_Data, _impl_.data_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::ReaderRequest::SCard_Transmit_Data, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::ReaderRequest::SCard_Transmit_Data, _impl_.data_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::ReaderRequest::MI_Data, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::ReaderRequest::MI_Data, _impl_.length_),
+        PROTOBUF_FIELD_OFFSET(::ReaderRequest::MI_Data, _impl_.data_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::ReaderRequest::ReaderRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        PROTOBUF_FIELD_OFFSET(::ReaderRequest::ReaderRequest, _impl_._oneof_case_[0]),
         ~0u,  // no _weak_field_map_
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
@@ -70,42 +214,68 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::ReaderRequest::ReaderRequest, _impl_.cmd_),
         PROTOBUF_FIELD_OFFSET(::ReaderRequest::ReaderRequest, _impl_.msgcnt_),
         PROTOBUF_FIELD_OFFSET(::ReaderRequest::ReaderRequest, _impl_.result_),
+        ::_pbi::kInvalidFieldOffsetTag,
+        ::_pbi::kInvalidFieldOffsetTag,
+        ::_pbi::kInvalidFieldOffsetTag,
+        ::_pbi::kInvalidFieldOffsetTag,
+        PROTOBUF_FIELD_OFFSET(::ReaderRequest::ReaderRequest, _impl_.request_data_),
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-        {0, -1, -1, sizeof(::ReaderRequest::ReaderRequest)},
+        {0, -1, -1, sizeof(::ReaderRequest::Default_Data)},
+        {9, -1, -1, sizeof(::ReaderRequest::SCard_Reader_List_Data)},
+        {18, -1, -1, sizeof(::ReaderRequest::SCard_Transmit_Data)},
+        {27, -1, -1, sizeof(::ReaderRequest::MI_Data)},
+        {37, -1, -1, sizeof(::ReaderRequest::ReaderRequest)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
+    &::ReaderRequest::_Default_Data_default_instance_._instance,
+    &::ReaderRequest::_SCard_Reader_List_Data_default_instance_._instance,
+    &::ReaderRequest::_SCard_Transmit_Data_default_instance_._instance,
+    &::ReaderRequest::_MI_Data_default_instance_._instance,
     &::ReaderRequest::_ReaderRequest_default_instance_._instance,
 };
 const char descriptor_table_protodef_ReaderRequest_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
-    "\n\023ReaderRequest.proto\022\rReaderRequest\"T\n\r"
-    "ReaderRequest\022#\n\003cmd\030\001 \001(\0162\026.ReaderReque"
-    "st.Command\022\016\n\006msgCnt\030\002 \001(\005\022\016\n\006result\030\003 \003"
-    "(\t*\362\002\n\007Command\022\013\n\007Cmd_Err\020\000\022\037\n\033Cmd_SCard"
-    "_Establish_Context\020e\022\031\n\025Cmd_SCard_Reader"
-    "_List\020f\022\032\n\026Cmd_SCard_Connect_Card\020g\022\035\n\031C"
-    "md_SCard_Disconnect_Card\020h\022\026\n\022Cmd_SCard_"
-    "Transmit\020i\022\023\n\016Cmd_MI_Get_UID\020\311\001\022\024\n\017Cmd_M"
-    "I_Load_Key\020\312\001\022\032\n\025Cmd_MI_Authentication\020\313"
-    "\001\022\026\n\021Cmd_Mi_Read_Block\020\314\001\022\027\n\022Cmd_Mi_Writ"
-    "e_Block\020\315\001\022\025\n\020Cmd_Mi_Decrement\020\316\001\022\025\n\020Cmd"
-    "_Mi_Increment\020\317\001\022\023\n\016Cmd_Mi_Restore\020\320\001\022\020\n"
-    "\013Cmd_Mi_HALT\020\321\001b\006proto3"
+    "\n\023ReaderRequest.proto\022\rReaderRequest\"\034\n\014"
+    "Default_Data\022\014\n\004data\030\001 \003(\t\"&\n\026SCard_Read"
+    "er_List_Data\022\014\n\004data\030\001 \003(\t\"#\n\023SCard_Tran"
+    "smit_Data\022\014\n\004data\030\001 \001(\014\"\'\n\007MI_Data\022\016\n\006le"
+    "ngth\030\001 \001(\005\022\014\n\004data\030\002 \001(\014\"\347\002\n\rReaderReque"
+    "st\022#\n\003cmd\030\001 \001(\0162\026.ReaderRequest.Command\022"
+    "\016\n\006msgCnt\030\002 \001(\005\022%\n\006result\030\003 \001(\0162\025.Reader"
+    "Request.Result\0223\n\014default_Data\030\004 \001(\0132\033.R"
+    "eaderRequest.Default_DataH\000\022G\n\026scard_Rea"
+    "der_List_Data\030\005 \001(\0132%.ReaderRequest.SCar"
+    "d_Reader_List_DataH\000\022A\n\023scard_Transmit_D"
+    "ata\030\006 \001(\0132\".ReaderRequest.SCard_Transmit"
+    "_DataH\000\022)\n\007mi_Data\030\007 \001(\0132\026.ReaderRequest"
+    ".MI_DataH\000B\016\n\014request_data*\362\002\n\007Command\022\013"
+    "\n\007Cmd_Err\020\000\022\037\n\033Cmd_SCard_Establish_Conte"
+    "xt\020e\022\031\n\025Cmd_SCard_Reader_List\020f\022\032\n\026Cmd_S"
+    "Card_Connect_Card\020g\022\035\n\031Cmd_SCard_Disconn"
+    "ect_Card\020h\022\026\n\022Cmd_SCard_Transmit\020i\022\023\n\016Cm"
+    "d_MI_Get_UID\020\311\001\022\024\n\017Cmd_MI_Load_Key\020\312\001\022\032\n"
+    "\025Cmd_MI_Authentication\020\313\001\022\026\n\021Cmd_MI_Read"
+    "_Block\020\314\001\022\027\n\022Cmd_MI_Write_Block\020\315\001\022\025\n\020Cm"
+    "d_MI_Decrement\020\316\001\022\025\n\020Cmd_MI_Increment\020\317\001"
+    "\022\023\n\016Cmd_MI_Restore\020\320\001\022\020\n\013Cmd_MI_HALT\020\321\001*"
+    "#\n\006Sender\022\013\n\007Request\020\000\022\014\n\010Response\020\001*\'\n\006"
+    "Result\022\013\n\007Success\020\000\022\020\n\014Default_Fail\020cb\006p"
+    "roto3"
 };
 static ::absl::once_flag descriptor_table_ReaderRequest_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_ReaderRequest_2eproto = {
     false,
     false,
-    503,
+    1005,
     descriptor_table_protodef_ReaderRequest_2eproto,
     "ReaderRequest.proto",
     &descriptor_table_ReaderRequest_2eproto_once,
     nullptr,
     0,
-    1,
+    5,
     schemas,
     file_default_instances,
     TableStruct_ReaderRequest_2eproto::offsets,
@@ -122,12 +292,1048 @@ PROTOBUF_CONSTINIT const uint32_t Command_internal_data_[] = {
 bool Command_IsValid(int value) {
   return ::_pbi::ValidateEnum(value, Command_internal_data_);
 }
+const ::google::protobuf::EnumDescriptor* Sender_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_ReaderRequest_2eproto);
+  return file_level_enum_descriptors_ReaderRequest_2eproto[1];
+}
+PROTOBUF_CONSTINIT const uint32_t Sender_internal_data_[] = {
+    131072u, 0u, };
+bool Sender_IsValid(int value) {
+  return 0 <= value && value <= 1;
+}
+const ::google::protobuf::EnumDescriptor* Result_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_ReaderRequest_2eproto);
+  return file_level_enum_descriptors_ReaderRequest_2eproto[2];
+}
+PROTOBUF_CONSTINIT const uint32_t Result_internal_data_[] = {
+    65536u, 65536u, 99u, };
+bool Result_IsValid(int value) {
+  return ::_pbi::ValidateEnum(value, Result_internal_data_);
+}
+// ===================================================================
+
+class Default_Data::_Internal {
+ public:
+};
+
+Default_Data::Default_Data(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:ReaderRequest.Default_Data)
+}
+inline PROTOBUF_NDEBUG_INLINE Default_Data::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::ReaderRequest::Default_Data& from_msg)
+      : data_{visibility, arena, from.data_},
+        _cached_size_{0} {}
+
+Default_Data::Default_Data(
+    ::google::protobuf::Arena* arena,
+    const Default_Data& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  Default_Data* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:ReaderRequest.Default_Data)
+}
+inline PROTOBUF_NDEBUG_INLINE Default_Data::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : data_{visibility, arena},
+        _cached_size_{0} {}
+
+inline void Default_Data::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+Default_Data::~Default_Data() {
+  // @@protoc_insertion_point(destructor:ReaderRequest.Default_Data)
+  SharedDtor(*this);
+}
+inline void Default_Data::SharedDtor(MessageLite& self) {
+  Default_Data& this_ = static_cast<Default_Data&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* Default_Data::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) Default_Data(arena);
+}
+constexpr auto Default_Data::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(Default_Data, _impl_.data_) +
+          decltype(Default_Data::_impl_.data_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::ZeroInit(
+        sizeof(Default_Data), alignof(Default_Data), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&Default_Data::PlacementNew_,
+                                 sizeof(Default_Data),
+                                 alignof(Default_Data));
+  }
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull Default_Data::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_Default_Data_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &Default_Data::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<Default_Data>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &Default_Data::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<Default_Data>(), &Default_Data::ByteSizeLong,
+            &Default_Data::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(Default_Data, _impl_._cached_size_),
+        false,
+    },
+    &Default_Data::kDescriptorMethods,
+    &descriptor_table_ReaderRequest_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* Default_Data::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 39, 2> Default_Data::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::ReaderRequest::Default_Data>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // repeated string data = 1;
+    {::_pbi::TcParser::FastUR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Default_Data, _impl_.data_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated string data = 1;
+    {PROTOBUF_FIELD_OFFSET(Default_Data, _impl_.data_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+  }},
+  // no aux_entries
+  {{
+    "\32\4\0\0\0\0\0\0"
+    "ReaderRequest.Default_Data"
+    "data"
+  }},
+};
+
+PROTOBUF_NOINLINE void Default_Data::Clear() {
+// @@protoc_insertion_point(message_clear_start:ReaderRequest.Default_Data)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.data_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* Default_Data::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const Default_Data& this_ = static_cast<const Default_Data&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* Default_Data::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const Default_Data& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:ReaderRequest.Default_Data)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // repeated string data = 1;
+          for (int i = 0, n = this_._internal_data_size(); i < n; ++i) {
+            const auto& s = this_._internal_data().Get(i);
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "ReaderRequest.Default_Data.data");
+            target = stream->WriteString(1, s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:ReaderRequest.Default_Data)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t Default_Data::ByteSizeLong(const MessageLite& base) {
+          const Default_Data& this_ = static_cast<const Default_Data&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t Default_Data::ByteSizeLong() const {
+          const Default_Data& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:ReaderRequest.Default_Data)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // repeated string data = 1;
+            {
+              total_size +=
+                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_data().size());
+              for (int i = 0, n = this_._internal_data().size(); i < n; ++i) {
+                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+                    this_._internal_data().Get(i));
+              }
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void Default_Data::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<Default_Data*>(&to_msg);
+  auto& from = static_cast<const Default_Data&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:ReaderRequest.Default_Data)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_data()->MergeFrom(from._internal_data());
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Default_Data::CopyFrom(const Default_Data& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ReaderRequest.Default_Data)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void Default_Data::InternalSwap(Default_Data* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.data_.InternalSwap(&other->_impl_.data_);
+}
+
+::google::protobuf::Metadata Default_Data::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SCard_Reader_List_Data::_Internal {
+ public:
+};
+
+SCard_Reader_List_Data::SCard_Reader_List_Data(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:ReaderRequest.SCard_Reader_List_Data)
+}
+inline PROTOBUF_NDEBUG_INLINE SCard_Reader_List_Data::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::ReaderRequest::SCard_Reader_List_Data& from_msg)
+      : data_{visibility, arena, from.data_},
+        _cached_size_{0} {}
+
+SCard_Reader_List_Data::SCard_Reader_List_Data(
+    ::google::protobuf::Arena* arena,
+    const SCard_Reader_List_Data& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SCard_Reader_List_Data* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:ReaderRequest.SCard_Reader_List_Data)
+}
+inline PROTOBUF_NDEBUG_INLINE SCard_Reader_List_Data::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : data_{visibility, arena},
+        _cached_size_{0} {}
+
+inline void SCard_Reader_List_Data::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+SCard_Reader_List_Data::~SCard_Reader_List_Data() {
+  // @@protoc_insertion_point(destructor:ReaderRequest.SCard_Reader_List_Data)
+  SharedDtor(*this);
+}
+inline void SCard_Reader_List_Data::SharedDtor(MessageLite& self) {
+  SCard_Reader_List_Data& this_ = static_cast<SCard_Reader_List_Data&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* SCard_Reader_List_Data::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SCard_Reader_List_Data(arena);
+}
+constexpr auto SCard_Reader_List_Data::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(SCard_Reader_List_Data, _impl_.data_) +
+          decltype(SCard_Reader_List_Data::_impl_.data_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::ZeroInit(
+        sizeof(SCard_Reader_List_Data), alignof(SCard_Reader_List_Data), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&SCard_Reader_List_Data::PlacementNew_,
+                                 sizeof(SCard_Reader_List_Data),
+                                 alignof(SCard_Reader_List_Data));
+  }
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SCard_Reader_List_Data::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SCard_Reader_List_Data_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SCard_Reader_List_Data::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<SCard_Reader_List_Data>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SCard_Reader_List_Data::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<SCard_Reader_List_Data>(), &SCard_Reader_List_Data::ByteSizeLong,
+            &SCard_Reader_List_Data::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SCard_Reader_List_Data, _impl_._cached_size_),
+        false,
+    },
+    &SCard_Reader_List_Data::kDescriptorMethods,
+    &descriptor_table_ReaderRequest_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SCard_Reader_List_Data::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 49, 2> SCard_Reader_List_Data::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::ReaderRequest::SCard_Reader_List_Data>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // repeated string data = 1;
+    {::_pbi::TcParser::FastUR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(SCard_Reader_List_Data, _impl_.data_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated string data = 1;
+    {PROTOBUF_FIELD_OFFSET(SCard_Reader_List_Data, _impl_.data_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+  }},
+  // no aux_entries
+  {{
+    "\44\4\0\0\0\0\0\0"
+    "ReaderRequest.SCard_Reader_List_Data"
+    "data"
+  }},
+};
+
+PROTOBUF_NOINLINE void SCard_Reader_List_Data::Clear() {
+// @@protoc_insertion_point(message_clear_start:ReaderRequest.SCard_Reader_List_Data)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.data_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* SCard_Reader_List_Data::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const SCard_Reader_List_Data& this_ = static_cast<const SCard_Reader_List_Data&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* SCard_Reader_List_Data::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const SCard_Reader_List_Data& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:ReaderRequest.SCard_Reader_List_Data)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // repeated string data = 1;
+          for (int i = 0, n = this_._internal_data_size(); i < n; ++i) {
+            const auto& s = this_._internal_data().Get(i);
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "ReaderRequest.SCard_Reader_List_Data.data");
+            target = stream->WriteString(1, s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:ReaderRequest.SCard_Reader_List_Data)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t SCard_Reader_List_Data::ByteSizeLong(const MessageLite& base) {
+          const SCard_Reader_List_Data& this_ = static_cast<const SCard_Reader_List_Data&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t SCard_Reader_List_Data::ByteSizeLong() const {
+          const SCard_Reader_List_Data& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:ReaderRequest.SCard_Reader_List_Data)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // repeated string data = 1;
+            {
+              total_size +=
+                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_data().size());
+              for (int i = 0, n = this_._internal_data().size(); i < n; ++i) {
+                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+                    this_._internal_data().Get(i));
+              }
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void SCard_Reader_List_Data::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<SCard_Reader_List_Data*>(&to_msg);
+  auto& from = static_cast<const SCard_Reader_List_Data&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:ReaderRequest.SCard_Reader_List_Data)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_data()->MergeFrom(from._internal_data());
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SCard_Reader_List_Data::CopyFrom(const SCard_Reader_List_Data& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ReaderRequest.SCard_Reader_List_Data)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SCard_Reader_List_Data::InternalSwap(SCard_Reader_List_Data* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.data_.InternalSwap(&other->_impl_.data_);
+}
+
+::google::protobuf::Metadata SCard_Reader_List_Data::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SCard_Transmit_Data::_Internal {
+ public:
+};
+
+SCard_Transmit_Data::SCard_Transmit_Data(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:ReaderRequest.SCard_Transmit_Data)
+}
+inline PROTOBUF_NDEBUG_INLINE SCard_Transmit_Data::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::ReaderRequest::SCard_Transmit_Data& from_msg)
+      : data_(arena, from.data_),
+        _cached_size_{0} {}
+
+SCard_Transmit_Data::SCard_Transmit_Data(
+    ::google::protobuf::Arena* arena,
+    const SCard_Transmit_Data& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SCard_Transmit_Data* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:ReaderRequest.SCard_Transmit_Data)
+}
+inline PROTOBUF_NDEBUG_INLINE SCard_Transmit_Data::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : data_(arena),
+        _cached_size_{0} {}
+
+inline void SCard_Transmit_Data::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+SCard_Transmit_Data::~SCard_Transmit_Data() {
+  // @@protoc_insertion_point(destructor:ReaderRequest.SCard_Transmit_Data)
+  SharedDtor(*this);
+}
+inline void SCard_Transmit_Data::SharedDtor(MessageLite& self) {
+  SCard_Transmit_Data& this_ = static_cast<SCard_Transmit_Data&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.data_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* SCard_Transmit_Data::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SCard_Transmit_Data(arena);
+}
+constexpr auto SCard_Transmit_Data::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(SCard_Transmit_Data),
+                                            alignof(SCard_Transmit_Data));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SCard_Transmit_Data::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SCard_Transmit_Data_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SCard_Transmit_Data::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<SCard_Transmit_Data>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SCard_Transmit_Data::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<SCard_Transmit_Data>(), &SCard_Transmit_Data::ByteSizeLong,
+            &SCard_Transmit_Data::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SCard_Transmit_Data, _impl_._cached_size_),
+        false,
+    },
+    &SCard_Transmit_Data::kDescriptorMethods,
+    &descriptor_table_ReaderRequest_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SCard_Transmit_Data::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> SCard_Transmit_Data::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::ReaderRequest::SCard_Transmit_Data>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // bytes data = 1;
+    {::_pbi::TcParser::FastBS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(SCard_Transmit_Data, _impl_.data_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // bytes data = 1;
+    {PROTOBUF_FIELD_OFFSET(SCard_Transmit_Data, _impl_.data_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void SCard_Transmit_Data::Clear() {
+// @@protoc_insertion_point(message_clear_start:ReaderRequest.SCard_Transmit_Data)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.data_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* SCard_Transmit_Data::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const SCard_Transmit_Data& this_ = static_cast<const SCard_Transmit_Data&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* SCard_Transmit_Data::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const SCard_Transmit_Data& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:ReaderRequest.SCard_Transmit_Data)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // bytes data = 1;
+          if (!this_._internal_data().empty()) {
+            const std::string& _s = this_._internal_data();
+            target = stream->WriteBytesMaybeAliased(1, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:ReaderRequest.SCard_Transmit_Data)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t SCard_Transmit_Data::ByteSizeLong(const MessageLite& base) {
+          const SCard_Transmit_Data& this_ = static_cast<const SCard_Transmit_Data&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t SCard_Transmit_Data::ByteSizeLong() const {
+          const SCard_Transmit_Data& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:ReaderRequest.SCard_Transmit_Data)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // bytes data = 1;
+            if (!this_._internal_data().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                              this_._internal_data());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void SCard_Transmit_Data::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<SCard_Transmit_Data*>(&to_msg);
+  auto& from = static_cast<const SCard_Transmit_Data&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:ReaderRequest.SCard_Transmit_Data)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_data().empty()) {
+    _this->_internal_set_data(from._internal_data());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SCard_Transmit_Data::CopyFrom(const SCard_Transmit_Data& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ReaderRequest.SCard_Transmit_Data)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SCard_Transmit_Data::InternalSwap(SCard_Transmit_Data* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.data_, &other->_impl_.data_, arena);
+}
+
+::google::protobuf::Metadata SCard_Transmit_Data::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class MI_Data::_Internal {
+ public:
+};
+
+MI_Data::MI_Data(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:ReaderRequest.MI_Data)
+}
+inline PROTOBUF_NDEBUG_INLINE MI_Data::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::ReaderRequest::MI_Data& from_msg)
+      : data_(arena, from.data_),
+        _cached_size_{0} {}
+
+MI_Data::MI_Data(
+    ::google::protobuf::Arena* arena,
+    const MI_Data& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  MI_Data* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.length_ = from._impl_.length_;
+
+  // @@protoc_insertion_point(copy_constructor:ReaderRequest.MI_Data)
+}
+inline PROTOBUF_NDEBUG_INLINE MI_Data::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : data_(arena),
+        _cached_size_{0} {}
+
+inline void MI_Data::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.length_ = {};
+}
+MI_Data::~MI_Data() {
+  // @@protoc_insertion_point(destructor:ReaderRequest.MI_Data)
+  SharedDtor(*this);
+}
+inline void MI_Data::SharedDtor(MessageLite& self) {
+  MI_Data& this_ = static_cast<MI_Data&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.data_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* MI_Data::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) MI_Data(arena);
+}
+constexpr auto MI_Data::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(MI_Data),
+                                            alignof(MI_Data));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull MI_Data::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_MI_Data_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &MI_Data::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<MI_Data>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &MI_Data::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<MI_Data>(), &MI_Data::ByteSizeLong,
+            &MI_Data::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(MI_Data, _impl_._cached_size_),
+        false,
+    },
+    &MI_Data::kDescriptorMethods,
+    &descriptor_table_ReaderRequest_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* MI_Data::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 0, 2> MI_Data::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::ReaderRequest::MI_Data>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // bytes data = 2;
+    {::_pbi::TcParser::FastBS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(MI_Data, _impl_.data_)}},
+    // int32 length = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(MI_Data, _impl_.length_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(MI_Data, _impl_.length_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int32 length = 1;
+    {PROTOBUF_FIELD_OFFSET(MI_Data, _impl_.length_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // bytes data = 2;
+    {PROTOBUF_FIELD_OFFSET(MI_Data, _impl_.data_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void MI_Data::Clear() {
+// @@protoc_insertion_point(message_clear_start:ReaderRequest.MI_Data)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.data_.ClearToEmpty();
+  _impl_.length_ = 0;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* MI_Data::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const MI_Data& this_ = static_cast<const MI_Data&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* MI_Data::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const MI_Data& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:ReaderRequest.MI_Data)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // int32 length = 1;
+          if (this_._internal_length() != 0) {
+            target = ::google::protobuf::internal::WireFormatLite::
+                WriteInt32ToArrayWithField<1>(
+                    stream, this_._internal_length(), target);
+          }
+
+          // bytes data = 2;
+          if (!this_._internal_data().empty()) {
+            const std::string& _s = this_._internal_data();
+            target = stream->WriteBytesMaybeAliased(2, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:ReaderRequest.MI_Data)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t MI_Data::ByteSizeLong(const MessageLite& base) {
+          const MI_Data& this_ = static_cast<const MI_Data&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t MI_Data::ByteSizeLong() const {
+          const MI_Data& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:ReaderRequest.MI_Data)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // bytes data = 2;
+            if (!this_._internal_data().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                              this_._internal_data());
+            }
+            // int32 length = 1;
+            if (this_._internal_length() != 0) {
+              total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+                  this_._internal_length());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void MI_Data::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<MI_Data*>(&to_msg);
+  auto& from = static_cast<const MI_Data&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:ReaderRequest.MI_Data)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_data().empty()) {
+    _this->_internal_set_data(from._internal_data());
+  }
+  if (from._internal_length() != 0) {
+    _this->_impl_.length_ = from._impl_.length_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void MI_Data::CopyFrom(const MI_Data& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ReaderRequest.MI_Data)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void MI_Data::InternalSwap(MI_Data* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.data_, &other->_impl_.data_, arena);
+        swap(_impl_.length_, other->_impl_.length_);
+}
+
+::google::protobuf::Metadata MI_Data::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
 // ===================================================================
 
 class ReaderRequest::_Internal {
  public:
+  static constexpr ::int32_t kOneofCaseOffset =
+      PROTOBUF_FIELD_OFFSET(::ReaderRequest::ReaderRequest, _impl_._oneof_case_);
 };
 
+void ReaderRequest::set_allocated_default_data(::ReaderRequest::Default_Data* default_data) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  clear_request_data();
+  if (default_data) {
+    ::google::protobuf::Arena* submessage_arena = default_data->GetArena();
+    if (message_arena != submessage_arena) {
+      default_data = ::google::protobuf::internal::GetOwnedMessage(message_arena, default_data, submessage_arena);
+    }
+    set_has_default_data();
+    _impl_.request_data_.default_data_ = default_data;
+  }
+  // @@protoc_insertion_point(field_set_allocated:ReaderRequest.ReaderRequest.default_Data)
+}
+void ReaderRequest::set_allocated_scard_reader_list_data(::ReaderRequest::SCard_Reader_List_Data* scard_reader_list_data) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  clear_request_data();
+  if (scard_reader_list_data) {
+    ::google::protobuf::Arena* submessage_arena = scard_reader_list_data->GetArena();
+    if (message_arena != submessage_arena) {
+      scard_reader_list_data = ::google::protobuf::internal::GetOwnedMessage(message_arena, scard_reader_list_data, submessage_arena);
+    }
+    set_has_scard_reader_list_data();
+    _impl_.request_data_.scard_reader_list_data_ = scard_reader_list_data;
+  }
+  // @@protoc_insertion_point(field_set_allocated:ReaderRequest.ReaderRequest.scard_Reader_List_Data)
+}
+void ReaderRequest::set_allocated_scard_transmit_data(::ReaderRequest::SCard_Transmit_Data* scard_transmit_data) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  clear_request_data();
+  if (scard_transmit_data) {
+    ::google::protobuf::Arena* submessage_arena = scard_transmit_data->GetArena();
+    if (message_arena != submessage_arena) {
+      scard_transmit_data = ::google::protobuf::internal::GetOwnedMessage(message_arena, scard_transmit_data, submessage_arena);
+    }
+    set_has_scard_transmit_data();
+    _impl_.request_data_.scard_transmit_data_ = scard_transmit_data;
+  }
+  // @@protoc_insertion_point(field_set_allocated:ReaderRequest.ReaderRequest.scard_Transmit_Data)
+}
+void ReaderRequest::set_allocated_mi_data(::ReaderRequest::MI_Data* mi_data) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  clear_request_data();
+  if (mi_data) {
+    ::google::protobuf::Arena* submessage_arena = mi_data->GetArena();
+    if (message_arena != submessage_arena) {
+      mi_data = ::google::protobuf::internal::GetOwnedMessage(message_arena, mi_data, submessage_arena);
+    }
+    set_has_mi_data();
+    _impl_.request_data_.mi_data_ = mi_data;
+  }
+  // @@protoc_insertion_point(field_set_allocated:ReaderRequest.ReaderRequest.mi_Data)
+}
 ReaderRequest::ReaderRequest(::google::protobuf::Arena* arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
     : ::google::protobuf::Message(arena, _class_data_.base()) {
@@ -140,8 +1346,9 @@ ReaderRequest::ReaderRequest(::google::protobuf::Arena* arena)
 inline PROTOBUF_NDEBUG_INLINE ReaderRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from, const ::ReaderRequest::ReaderRequest& from_msg)
-      : result_{visibility, arena, from.result_},
-        _cached_size_{0} {}
+      : request_data_{},
+        _cached_size_{0},
+        _oneof_case_{from._oneof_case_[0]} {}
 
 ReaderRequest::ReaderRequest(
     ::google::protobuf::Arena* arena,
@@ -160,26 +1367,43 @@ ReaderRequest::ReaderRequest(
                offsetof(Impl_, cmd_),
            reinterpret_cast<const char *>(&from._impl_) +
                offsetof(Impl_, cmd_),
-           offsetof(Impl_, msgcnt_) -
+           offsetof(Impl_, result_) -
                offsetof(Impl_, cmd_) +
-               sizeof(Impl_::msgcnt_));
+               sizeof(Impl_::result_));
+  switch (request_data_case()) {
+    case REQUEST_DATA_NOT_SET:
+      break;
+      case kDefaultData:
+        _impl_.request_data_.default_data_ = ::google::protobuf::Message::CopyConstruct<::ReaderRequest::Default_Data>(arena, *from._impl_.request_data_.default_data_);
+        break;
+      case kScardReaderListData:
+        _impl_.request_data_.scard_reader_list_data_ = ::google::protobuf::Message::CopyConstruct<::ReaderRequest::SCard_Reader_List_Data>(arena, *from._impl_.request_data_.scard_reader_list_data_);
+        break;
+      case kScardTransmitData:
+        _impl_.request_data_.scard_transmit_data_ = ::google::protobuf::Message::CopyConstruct<::ReaderRequest::SCard_Transmit_Data>(arena, *from._impl_.request_data_.scard_transmit_data_);
+        break;
+      case kMiData:
+        _impl_.request_data_.mi_data_ = ::google::protobuf::Message::CopyConstruct<::ReaderRequest::MI_Data>(arena, *from._impl_.request_data_.mi_data_);
+        break;
+  }
 
   // @@protoc_insertion_point(copy_constructor:ReaderRequest.ReaderRequest)
 }
 inline PROTOBUF_NDEBUG_INLINE ReaderRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : result_{visibility, arena},
-        _cached_size_{0} {}
+      : request_data_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
 
 inline void ReaderRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, cmd_),
            0,
-           offsetof(Impl_, msgcnt_) -
+           offsetof(Impl_, result_) -
                offsetof(Impl_, cmd_) +
-               sizeof(Impl_::msgcnt_));
+               sizeof(Impl_::result_));
 }
 ReaderRequest::~ReaderRequest() {
   // @@protoc_insertion_point(destructor:ReaderRequest.ReaderRequest)
@@ -189,28 +1413,63 @@ inline void ReaderRequest::SharedDtor(MessageLite& self) {
   ReaderRequest& this_ = static_cast<ReaderRequest&>(self);
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
+  if (this_.has_request_data()) {
+    this_.clear_request_data();
+  }
   this_._impl_.~Impl_();
 }
+
+void ReaderRequest::clear_request_data() {
+// @@protoc_insertion_point(one_of_clear_start:ReaderRequest.ReaderRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  switch (request_data_case()) {
+    case kDefaultData: {
+      if (GetArena() == nullptr) {
+        delete _impl_.request_data_.default_data_;
+      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_data_.default_data_);
+      }
+      break;
+    }
+    case kScardReaderListData: {
+      if (GetArena() == nullptr) {
+        delete _impl_.request_data_.scard_reader_list_data_;
+      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_data_.scard_reader_list_data_);
+      }
+      break;
+    }
+    case kScardTransmitData: {
+      if (GetArena() == nullptr) {
+        delete _impl_.request_data_.scard_transmit_data_;
+      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_data_.scard_transmit_data_);
+      }
+      break;
+    }
+    case kMiData: {
+      if (GetArena() == nullptr) {
+        delete _impl_.request_data_.mi_data_;
+      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_data_.mi_data_);
+      }
+      break;
+    }
+    case REQUEST_DATA_NOT_SET: {
+      break;
+    }
+  }
+  _impl_._oneof_case_[0] = REQUEST_DATA_NOT_SET;
+}
+
 
 inline void* ReaderRequest::PlacementNew_(const void*, void* mem,
                                         ::google::protobuf::Arena* arena) {
   return ::new (mem) ReaderRequest(arena);
 }
 constexpr auto ReaderRequest::InternalNewImpl_() {
-  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
-      PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.result_) +
-          decltype(ReaderRequest::_impl_.result_)::
-              InternalGetArenaOffset(
-                  ::google::protobuf::Message::internal_visibility()),
-  });
-  if (arena_bits.has_value()) {
-    return ::google::protobuf::internal::MessageCreator::ZeroInit(
-        sizeof(ReaderRequest), alignof(ReaderRequest), *arena_bits);
-  } else {
-    return ::google::protobuf::internal::MessageCreator(&ReaderRequest::PlacementNew_,
-                                 sizeof(ReaderRequest),
-                                 alignof(ReaderRequest));
-  }
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(ReaderRequest),
+                                            alignof(ReaderRequest));
 }
 PROTOBUF_CONSTINIT
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
@@ -240,17 +1499,17 @@ const ::google::protobuf::internal::ClassData* ReaderRequest::GetClassData() con
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 0, 42, 2> ReaderRequest::_table_ = {
+const ::_pbi::TcParseTable<2, 7, 4, 0, 2> ReaderRequest::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
+    7, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
+    4294967168,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
+    7,  // num_field_entries
+    4,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
@@ -265,9 +1524,9 @@ const ::_pbi::TcParseTable<2, 3, 0, 42, 2> ReaderRequest::_table_ = {
     // int32 msgCnt = 2;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ReaderRequest, _impl_.msgcnt_), 63>(),
      {16, 63, 0, PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.msgcnt_)}},
-    // repeated string result = 3;
-    {::_pbi::TcParser::FastUR1,
-     {26, 63, 0, PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.result_)}},
+    // .ReaderRequest.Result result = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ReaderRequest, _impl_.result_), 63>(),
+     {24, 63, 0, PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.result_)}},
   }}, {{
     65535, 65535
   }}, {{
@@ -277,15 +1536,27 @@ const ::_pbi::TcParseTable<2, 3, 0, 42, 2> ReaderRequest::_table_ = {
     // int32 msgCnt = 2;
     {PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.msgcnt_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // repeated string result = 3;
+    // .ReaderRequest.Result result = 3;
     {PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.result_), 0, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
-  }},
-  // no aux_entries
-  {{
-    "\33\0\0\6\0\0\0\0"
-    "ReaderRequest.ReaderRequest"
-    "result"
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+    // .ReaderRequest.Default_Data default_Data = 4;
+    {PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.request_data_.default_data_), _Internal::kOneofCaseOffset + 0, 0,
+    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .ReaderRequest.SCard_Reader_List_Data scard_Reader_List_Data = 5;
+    {PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.request_data_.scard_reader_list_data_), _Internal::kOneofCaseOffset + 0, 1,
+    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .ReaderRequest.SCard_Transmit_Data scard_Transmit_Data = 6;
+    {PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.request_data_.scard_transmit_data_), _Internal::kOneofCaseOffset + 0, 2,
+    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .ReaderRequest.MI_Data mi_Data = 7;
+    {PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.request_data_.mi_data_), _Internal::kOneofCaseOffset + 0, 3,
+    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::ReaderRequest::Default_Data>()},
+    {::_pbi::TcParser::GetTable<::ReaderRequest::SCard_Reader_List_Data>()},
+    {::_pbi::TcParser::GetTable<::ReaderRequest::SCard_Transmit_Data>()},
+    {::_pbi::TcParser::GetTable<::ReaderRequest::MI_Data>()},
+  }}, {{
   }},
 };
 
@@ -296,10 +1567,10 @@ PROTOBUF_NOINLINE void ReaderRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.result_.Clear();
   ::memset(&_impl_.cmd_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.msgcnt_) -
-      reinterpret_cast<char*>(&_impl_.cmd_)) + sizeof(_impl_.msgcnt_));
+      reinterpret_cast<char*>(&_impl_.result_) -
+      reinterpret_cast<char*>(&_impl_.cmd_)) + sizeof(_impl_.result_));
+  clear_request_data();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -332,14 +1603,41 @@ PROTOBUF_NOINLINE void ReaderRequest::Clear() {
                     stream, this_._internal_msgcnt(), target);
           }
 
-          // repeated string result = 3;
-          for (int i = 0, n = this_._internal_result_size(); i < n; ++i) {
-            const auto& s = this_._internal_result().Get(i);
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "ReaderRequest.ReaderRequest.result");
-            target = stream->WriteString(3, s, target);
+          // .ReaderRequest.Result result = 3;
+          if (this_._internal_result() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteEnumToArray(
+                3, this_._internal_result(), target);
           }
 
+          switch (this_.request_data_case()) {
+            case kDefaultData: {
+              target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                  4, *this_._impl_.request_data_.default_data_, this_._impl_.request_data_.default_data_->GetCachedSize(), target,
+                  stream);
+              break;
+            }
+            case kScardReaderListData: {
+              target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                  5, *this_._impl_.request_data_.scard_reader_list_data_, this_._impl_.request_data_.scard_reader_list_data_->GetCachedSize(), target,
+                  stream);
+              break;
+            }
+            case kScardTransmitData: {
+              target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                  6, *this_._impl_.request_data_.scard_transmit_data_, this_._impl_.request_data_.scard_transmit_data_->GetCachedSize(), target,
+                  stream);
+              break;
+            }
+            case kMiData: {
+              target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                  7, *this_._impl_.request_data_.mi_data_, this_._impl_.request_data_.mi_data_->GetCachedSize(), target,
+                  stream);
+              break;
+            }
+            default:
+              break;
+          }
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -365,17 +1663,6 @@ PROTOBUF_NOINLINE void ReaderRequest::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
-            // repeated string result = 3;
-            {
-              total_size +=
-                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_result().size());
-              for (int i = 0, n = this_._internal_result().size(); i < n; ++i) {
-                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-                    this_._internal_result().Get(i));
-              }
-            }
-          }
-           {
             // .ReaderRequest.Command cmd = 1;
             if (this_._internal_cmd() != 0) {
               total_size += 1 +
@@ -386,6 +1673,40 @@ PROTOBUF_NOINLINE void ReaderRequest::Clear() {
               total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
                   this_._internal_msgcnt());
             }
+            // .ReaderRequest.Result result = 3;
+            if (this_._internal_result() != 0) {
+              total_size += 1 +
+                            ::_pbi::WireFormatLite::EnumSize(this_._internal_result());
+            }
+          }
+          switch (this_.request_data_case()) {
+            // .ReaderRequest.Default_Data default_Data = 4;
+            case kDefaultData: {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_data_.default_data_);
+              break;
+            }
+            // .ReaderRequest.SCard_Reader_List_Data scard_Reader_List_Data = 5;
+            case kScardReaderListData: {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_data_.scard_reader_list_data_);
+              break;
+            }
+            // .ReaderRequest.SCard_Transmit_Data scard_Transmit_Data = 6;
+            case kScardTransmitData: {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_data_.scard_transmit_data_);
+              break;
+            }
+            // .ReaderRequest.MI_Data mi_Data = 7;
+            case kMiData: {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_data_.mi_data_);
+              break;
+            }
+            case REQUEST_DATA_NOT_SET: {
+              break;
+            }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
                                                      &this_._impl_._cached_size_);
@@ -394,17 +1715,71 @@ PROTOBUF_NOINLINE void ReaderRequest::Clear() {
 void ReaderRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
   auto* const _this = static_cast<ReaderRequest*>(&to_msg);
   auto& from = static_cast<const ReaderRequest&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
   // @@protoc_insertion_point(class_specific_merge_from_start:ReaderRequest.ReaderRequest)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_result()->MergeFrom(from._internal_result());
   if (from._internal_cmd() != 0) {
     _this->_impl_.cmd_ = from._impl_.cmd_;
   }
   if (from._internal_msgcnt() != 0) {
     _this->_impl_.msgcnt_ = from._impl_.msgcnt_;
+  }
+  if (from._internal_result() != 0) {
+    _this->_impl_.result_ = from._impl_.result_;
+  }
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[0]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[0];
+    const bool oneof_needs_init = oneof_to_case != oneof_from_case;
+    if (oneof_needs_init) {
+      if (oneof_to_case != 0) {
+        _this->clear_request_data();
+      }
+      _this->_impl_._oneof_case_[0] = oneof_from_case;
+    }
+
+    switch (oneof_from_case) {
+      case kDefaultData: {
+        if (oneof_needs_init) {
+          _this->_impl_.request_data_.default_data_ =
+              ::google::protobuf::Message::CopyConstruct<::ReaderRequest::Default_Data>(arena, *from._impl_.request_data_.default_data_);
+        } else {
+          _this->_impl_.request_data_.default_data_->MergeFrom(from._internal_default_data());
+        }
+        break;
+      }
+      case kScardReaderListData: {
+        if (oneof_needs_init) {
+          _this->_impl_.request_data_.scard_reader_list_data_ =
+              ::google::protobuf::Message::CopyConstruct<::ReaderRequest::SCard_Reader_List_Data>(arena, *from._impl_.request_data_.scard_reader_list_data_);
+        } else {
+          _this->_impl_.request_data_.scard_reader_list_data_->MergeFrom(from._internal_scard_reader_list_data());
+        }
+        break;
+      }
+      case kScardTransmitData: {
+        if (oneof_needs_init) {
+          _this->_impl_.request_data_.scard_transmit_data_ =
+              ::google::protobuf::Message::CopyConstruct<::ReaderRequest::SCard_Transmit_Data>(arena, *from._impl_.request_data_.scard_transmit_data_);
+        } else {
+          _this->_impl_.request_data_.scard_transmit_data_->MergeFrom(from._internal_scard_transmit_data());
+        }
+        break;
+      }
+      case kMiData: {
+        if (oneof_needs_init) {
+          _this->_impl_.request_data_.mi_data_ =
+              ::google::protobuf::Message::CopyConstruct<::ReaderRequest::MI_Data>(arena, *from._impl_.request_data_.mi_data_);
+        } else {
+          _this->_impl_.request_data_.mi_data_->MergeFrom(from._internal_mi_data());
+        }
+        break;
+      }
+      case REQUEST_DATA_NOT_SET:
+        break;
+    }
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -420,13 +1795,14 @@ void ReaderRequest::CopyFrom(const ReaderRequest& from) {
 void ReaderRequest::InternalSwap(ReaderRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  _impl_.result_.InternalSwap(&other->_impl_.result_);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.msgcnt_)
-      + sizeof(ReaderRequest::_impl_.msgcnt_)
+      PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.result_)
+      + sizeof(ReaderRequest::_impl_.result_)
       - PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.cmd_)>(
           reinterpret_cast<char*>(&_impl_.cmd_),
           reinterpret_cast<char*>(&other->_impl_.cmd_));
+  swap(_impl_.request_data_, other->_impl_.request_data_);
+  swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
 
 ::google::protobuf::Metadata ReaderRequest::GetMetadata() const {

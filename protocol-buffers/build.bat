@@ -1,1 +1,1 @@
-protoc --cpp_out=./build-cpp ReaderRequest.proto
+F:\dev\PCSCReader\winscard-pcsc\vcpkg_installed\x64-windows-static\x64-windows\tools\protobuf\protoc --cpp_out=./build-cpp ReaderRequest.proto

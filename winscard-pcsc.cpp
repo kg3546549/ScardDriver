@@ -306,17 +306,15 @@ int main() {
 		return -1;
 	}
 
-	//std::cout << "requestPB.cmd() : " << std::hex << requestPB.cmd() << std::endl;
-	//std::cout << "requestPB.msgcnt() : " << requestPB.msgcnt() << std::endl;
+	std::cout << "requestPB.cmd() : " << std::hex << requestPB.cmd() << std::endl;
+	std::cout << "requestPB.msgcnt() : " << requestPB.msgcnt() << std::endl;
 
-	//std::cout << "requsetPB.result_size() : " << requestPB.result_size() << std::endl;
-	//std::string result = "";
-	/*
-	std::cout << "requsetPB.result(0) : " << result << std::endl;*/
-
-	//for (int i = 0; i < requestPB.result_size();i++) {
-	//	std::cout << requestPB.result(i) << std::endl;
-	//}
+	std::cout << "requsetPB.result_size() : " << requestPB.result_size() << std::endl;
+	std::string result = requestPB.result(0);
+	
+	for (int i = 0; i < requestPB.result_size();i++) {
+		std::cout << requestPB.result(i) << std::endl;
+	}
 
 
 	//std::cout << "Serialize Data : " << ser_data << std::endl;
