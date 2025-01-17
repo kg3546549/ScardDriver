@@ -269,23 +269,58 @@ int main2(void) {
 }
 #endif
 
+void printRequest(const ReaderRequest::ReaderRequest& request) {
+    if (request.IsInitialized()) {
+        std::cout << "Protobuf Object (DebugString):\n"
+            << request.DebugString() << std::endl;
+    }
+    else {
+        std::cout << "message is not fully initialized!" << std::endl;
+    }
+    
+}
+
 int main() {
+    GOOGLE_PROTOBUF_VERIFY_VERSION;
+
 	ReaderRequest::ReaderRequest readerPB;
 
-	readerPB.set_cmd(ReaderRequest::Cmd_SCard_Establish_Context);
-	readerPB.set_msgcnt(1);
-	readerPB.add_result(std::string("Test"));
+    
+	
+	//readerPB.add_result(std::string("Test"));
 
 	std::cout << "Create PB Instance Complete" << std::endl;
 
-	size_t size = readerPB.ByteSizeLong();  // 직렬화된 데이터의 크기를 계산
-	unsigned char* buffer = new unsigned char[size];
 	
-	std::cout << "size : " << size << std::endl;
 	
 
 
+	
+    readerPB.set_cmd(ReaderRequest::Cmd_SCard_Establish_Context);
+    readerPB.set_msgcnt(1);
+    readerPB.set_sender(ReaderRequest::Sender::Request);
+    readerPB.set_result(ReaderRequest::Result::Success);
+    
+    if (!readerPB.has_default_data()) {
+        ReaderRequest::Default_Data* defaultData = readerPB.mutable_default_data();
+        std::cout << std::hex << "defaultData ptr" << defaultData << std::endl;
+        if (defaultData != nullptr) {
+            defaultData->add_data(std::string("Test1"));
+            defaultData->add_data(std::string("Test2"));
+            defaultData->add_data(std::string("Test3"));
+        }
+    }
+
+    if (!readerPB.IsInitialized()) {
+        std::cout << "not initialized" << std::endl;
+        return 1;
+    }
+    /*printRequest(readerPB);*/
+    size_t size = readerPB.ByteSizeLong();  // 직렬화된 데이터의 크기를 계산
+    unsigned char* buffer = new unsigned char[size];
+    std::cout << "size : " << size << std::endl;
 	if (!readerPB.SerializeToArray(buffer, size)) {
+        
 		std::cerr << "Serialization to array failed!" << std::endl;
 		return 0;
 	}
@@ -307,14 +342,23 @@ int main() {
 	}
 
 	std::cout << "requestPB.cmd() : " << std::hex << requestPB.cmd() << std::endl;
-	std::cout << "requestPB.msgcnt() : " << requestPB.msgcnt() << std::endl;
+    std::cout << "requestPB.msgcnt() : " << requestPB.msgcnt() << std::endl;
 
-	std::cout << "requsetPB.result_size() : " << requestPB.result_size() << std::endl;
+
+    if (requestPB.has_default_data()) {
+        size_t dataLen = requestPB.default_data().data_size();
+        for (int i = 0; i < dataLen; i++) {
+            std::cout << "requestPB.default_data().data("<<dataLen<<"): " << requestPB.default_data().data(i) << std::endl;
+        }
+        
+    }
+
+	/*std::cout << "requsetPB.result_size() : " << requestPB.result_size() << std::endl;
 	std::string result = requestPB.result(0);
 	
 	for (int i = 0; i < requestPB.result_size();i++) {
 		std::cout << requestPB.result(i) << std::endl;
-	}
+	}*/
 
 
 	//std::cout << "Serialize Data : " << ser_data << std::endl;
@@ -322,6 +366,7 @@ int main() {
 	//SocketListener SL = SocketListener();
 
 	//SL.StartListener();
+    google::protobuf::ShutdownProtobufLibrary();
 
 	return 1;
 }

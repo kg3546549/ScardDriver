@@ -1045,10 +1045,10 @@ class ReaderRequest final : public ::google::protobuf::Message
     return *internal_default_instance();
   }
   enum RequestDataCase {
-    kDefaultData = 4,
-    kScardReaderListData = 5,
-    kScardTransmitData = 6,
-    kMiData = 7,
+    kDefaultData = 5,
+    kScardReaderListData = 6,
+    kScardTransmitData = 7,
+    kMiData = 8,
     REQUEST_DATA_NOT_SET = 0,
   };
   static inline const ReaderRequest* internal_default_instance() {
@@ -1143,12 +1143,13 @@ class ReaderRequest final : public ::google::protobuf::Message
   // accessors -------------------------------------------------------
   enum : int {
     kCmdFieldNumber = 1,
-    kMsgCntFieldNumber = 2,
-    kResultFieldNumber = 3,
-    kDefaultDataFieldNumber = 4,
-    kScardReaderListDataFieldNumber = 5,
-    kScardTransmitDataFieldNumber = 6,
-    kMiDataFieldNumber = 7,
+    kSenderFieldNumber = 2,
+    kMsgCntFieldNumber = 3,
+    kResultFieldNumber = 4,
+    kDefaultDataFieldNumber = 5,
+    kScardReaderListDataFieldNumber = 6,
+    kScardTransmitDataFieldNumber = 7,
+    kMiDataFieldNumber = 8,
   };
   // .ReaderRequest.Command cmd = 1;
   void clear_cmd() ;
@@ -1160,7 +1161,17 @@ class ReaderRequest final : public ::google::protobuf::Message
   void _internal_set_cmd(::ReaderRequest::Command value);
 
   public:
-  // int32 msgCnt = 2;
+  // .ReaderRequest.Sender sender = 2;
+  void clear_sender() ;
+  ::ReaderRequest::Sender sender() const;
+  void set_sender(::ReaderRequest::Sender value);
+
+  private:
+  ::ReaderRequest::Sender _internal_sender() const;
+  void _internal_set_sender(::ReaderRequest::Sender value);
+
+  public:
+  // int32 msgCnt = 3;
   void clear_msgcnt() ;
   ::int32_t msgcnt() const;
   void set_msgcnt(::int32_t value);
@@ -1170,7 +1181,7 @@ class ReaderRequest final : public ::google::protobuf::Message
   void _internal_set_msgcnt(::int32_t value);
 
   public:
-  // .ReaderRequest.Result result = 3;
+  // .ReaderRequest.Result result = 4;
   void clear_result() ;
   ::ReaderRequest::Result result() const;
   void set_result(::ReaderRequest::Result value);
@@ -1180,7 +1191,7 @@ class ReaderRequest final : public ::google::protobuf::Message
   void _internal_set_result(::ReaderRequest::Result value);
 
   public:
-  // .ReaderRequest.Default_Data default_Data = 4;
+  // .ReaderRequest.Default_Data default_Data = 5;
   bool has_default_data() const;
   private:
   bool _internal_has_default_data() const;
@@ -1199,7 +1210,7 @@ class ReaderRequest final : public ::google::protobuf::Message
   ::ReaderRequest::Default_Data* _internal_mutable_default_data();
 
   public:
-  // .ReaderRequest.SCard_Reader_List_Data scard_Reader_List_Data = 5;
+  // .ReaderRequest.SCard_Reader_List_Data scard_Reader_List_Data = 6;
   bool has_scard_reader_list_data() const;
   private:
   bool _internal_has_scard_reader_list_data() const;
@@ -1218,7 +1229,7 @@ class ReaderRequest final : public ::google::protobuf::Message
   ::ReaderRequest::SCard_Reader_List_Data* _internal_mutable_scard_reader_list_data();
 
   public:
-  // .ReaderRequest.SCard_Transmit_Data scard_Transmit_Data = 6;
+  // .ReaderRequest.SCard_Transmit_Data scard_Transmit_Data = 7;
   bool has_scard_transmit_data() const;
   private:
   bool _internal_has_scard_transmit_data() const;
@@ -1237,7 +1248,7 @@ class ReaderRequest final : public ::google::protobuf::Message
   ::ReaderRequest::SCard_Transmit_Data* _internal_mutable_scard_transmit_data();
 
   public:
-  // .ReaderRequest.MI_Data mi_Data = 7;
+  // .ReaderRequest.MI_Data mi_Data = 8;
   bool has_mi_data() const;
   private:
   bool _internal_has_mi_data() const;
@@ -1269,7 +1280,7 @@ class ReaderRequest final : public ::google::protobuf::Message
   inline void clear_has_request_data();
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      2, 7, 4,
+      2, 8, 4,
       0, 2>
       _table_;
 
@@ -1288,6 +1299,7 @@ class ReaderRequest final : public ::google::protobuf::Message
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const ReaderRequest& from_msg);
     int cmd_;
+    int sender_;
     ::int32_t msgcnt_;
     int result_;
     union RequestDataUnion {
@@ -1606,7 +1618,29 @@ inline void ReaderRequest::_internal_set_cmd(::ReaderRequest::Command value) {
   _impl_.cmd_ = value;
 }
 
-// int32 msgCnt = 2;
+// .ReaderRequest.Sender sender = 2;
+inline void ReaderRequest::clear_sender() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.sender_ = 0;
+}
+inline ::ReaderRequest::Sender ReaderRequest::sender() const {
+  // @@protoc_insertion_point(field_get:ReaderRequest.ReaderRequest.sender)
+  return _internal_sender();
+}
+inline void ReaderRequest::set_sender(::ReaderRequest::Sender value) {
+  _internal_set_sender(value);
+  // @@protoc_insertion_point(field_set:ReaderRequest.ReaderRequest.sender)
+}
+inline ::ReaderRequest::Sender ReaderRequest::_internal_sender() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::ReaderRequest::Sender>(_impl_.sender_);
+}
+inline void ReaderRequest::_internal_set_sender(::ReaderRequest::Sender value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.sender_ = value;
+}
+
+// int32 msgCnt = 3;
 inline void ReaderRequest::clear_msgcnt() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.msgcnt_ = 0;
@@ -1628,7 +1662,7 @@ inline void ReaderRequest::_internal_set_msgcnt(::int32_t value) {
   _impl_.msgcnt_ = value;
 }
 
-// .ReaderRequest.Result result = 3;
+// .ReaderRequest.Result result = 4;
 inline void ReaderRequest::clear_result() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.result_ = 0;
@@ -1650,7 +1684,7 @@ inline void ReaderRequest::_internal_set_result(::ReaderRequest::Result value) {
   _impl_.result_ = value;
 }
 
-// .ReaderRequest.Default_Data default_Data = 4;
+// .ReaderRequest.Default_Data default_Data = 5;
 inline bool ReaderRequest::has_default_data() const {
   return request_data_case() == kDefaultData;
 }
@@ -1729,7 +1763,7 @@ inline ::ReaderRequest::Default_Data* ReaderRequest::mutable_default_data() ABSL
   return _msg;
 }
 
-// .ReaderRequest.SCard_Reader_List_Data scard_Reader_List_Data = 5;
+// .ReaderRequest.SCard_Reader_List_Data scard_Reader_List_Data = 6;
 inline bool ReaderRequest::has_scard_reader_list_data() const {
   return request_data_case() == kScardReaderListData;
 }
@@ -1808,7 +1842,7 @@ inline ::ReaderRequest::SCard_Reader_List_Data* ReaderRequest::mutable_scard_rea
   return _msg;
 }
 
-// .ReaderRequest.SCard_Transmit_Data scard_Transmit_Data = 6;
+// .ReaderRequest.SCard_Transmit_Data scard_Transmit_Data = 7;
 inline bool ReaderRequest::has_scard_transmit_data() const {
   return request_data_case() == kScardTransmitData;
 }
@@ -1887,7 +1921,7 @@ inline ::ReaderRequest::SCard_Transmit_Data* ReaderRequest::mutable_scard_transm
   return _msg;
 }
 
-// .ReaderRequest.MI_Data mi_Data = 7;
+// .ReaderRequest.MI_Data mi_Data = 8;
 inline bool ReaderRequest::has_mi_data() const {
   return request_data_case() == kMiData;
 }

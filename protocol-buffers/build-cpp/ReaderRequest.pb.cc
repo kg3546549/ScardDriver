@@ -134,6 +134,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr ReaderRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : cmd_{static_cast< ::ReaderRequest::Command >(0)},
+        sender_{static_cast< ::ReaderRequest::Sender >(0)},
         msgcnt_{0},
         result_{static_cast< ::ReaderRequest::Result >(0)},
         request_data_{},
@@ -212,6 +213,7 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::ReaderRequest::ReaderRequest, _impl_.cmd_),
+        PROTOBUF_FIELD_OFFSET(::ReaderRequest::ReaderRequest, _impl_.sender_),
         PROTOBUF_FIELD_OFFSET(::ReaderRequest::ReaderRequest, _impl_.msgcnt_),
         PROTOBUF_FIELD_OFFSET(::ReaderRequest::ReaderRequest, _impl_.result_),
         ::_pbi::kInvalidFieldOffsetTag,
@@ -242,34 +244,35 @@ const char descriptor_table_protodef_ReaderRequest_2eproto[] ABSL_ATTRIBUTE_SECT
     "Default_Data\022\014\n\004data\030\001 \003(\t\"&\n\026SCard_Read"
     "er_List_Data\022\014\n\004data\030\001 \003(\t\"#\n\023SCard_Tran"
     "smit_Data\022\014\n\004data\030\001 \001(\014\"\'\n\007MI_Data\022\016\n\006le"
-    "ngth\030\001 \001(\005\022\014\n\004data\030\002 \001(\014\"\347\002\n\rReaderReque"
+    "ngth\030\001 \001(\005\022\014\n\004data\030\002 \001(\014\"\216\003\n\rReaderReque"
     "st\022#\n\003cmd\030\001 \001(\0162\026.ReaderRequest.Command\022"
-    "\016\n\006msgCnt\030\002 \001(\005\022%\n\006result\030\003 \001(\0162\025.Reader"
-    "Request.Result\0223\n\014default_Data\030\004 \001(\0132\033.R"
-    "eaderRequest.Default_DataH\000\022G\n\026scard_Rea"
-    "der_List_Data\030\005 \001(\0132%.ReaderRequest.SCar"
-    "d_Reader_List_DataH\000\022A\n\023scard_Transmit_D"
-    "ata\030\006 \001(\0132\".ReaderRequest.SCard_Transmit"
-    "_DataH\000\022)\n\007mi_Data\030\007 \001(\0132\026.ReaderRequest"
-    ".MI_DataH\000B\016\n\014request_data*\362\002\n\007Command\022\013"
-    "\n\007Cmd_Err\020\000\022\037\n\033Cmd_SCard_Establish_Conte"
-    "xt\020e\022\031\n\025Cmd_SCard_Reader_List\020f\022\032\n\026Cmd_S"
-    "Card_Connect_Card\020g\022\035\n\031Cmd_SCard_Disconn"
-    "ect_Card\020h\022\026\n\022Cmd_SCard_Transmit\020i\022\023\n\016Cm"
-    "d_MI_Get_UID\020\311\001\022\024\n\017Cmd_MI_Load_Key\020\312\001\022\032\n"
-    "\025Cmd_MI_Authentication\020\313\001\022\026\n\021Cmd_MI_Read"
-    "_Block\020\314\001\022\027\n\022Cmd_MI_Write_Block\020\315\001\022\025\n\020Cm"
-    "d_MI_Decrement\020\316\001\022\025\n\020Cmd_MI_Increment\020\317\001"
-    "\022\023\n\016Cmd_MI_Restore\020\320\001\022\020\n\013Cmd_MI_HALT\020\321\001*"
-    "#\n\006Sender\022\013\n\007Request\020\000\022\014\n\010Response\020\001*\'\n\006"
-    "Result\022\013\n\007Success\020\000\022\020\n\014Default_Fail\020cb\006p"
-    "roto3"
+    "%\n\006sender\030\002 \001(\0162\025.ReaderRequest.Sender\022\016"
+    "\n\006msgCnt\030\003 \001(\005\022%\n\006result\030\004 \001(\0162\025.ReaderR"
+    "equest.Result\0223\n\014default_Data\030\005 \001(\0132\033.Re"
+    "aderRequest.Default_DataH\000\022G\n\026scard_Read"
+    "er_List_Data\030\006 \001(\0132%.ReaderRequest.SCard"
+    "_Reader_List_DataH\000\022A\n\023scard_Transmit_Da"
+    "ta\030\007 \001(\0132\".ReaderRequest.SCard_Transmit_"
+    "DataH\000\022)\n\007mi_Data\030\010 \001(\0132\026.ReaderRequest."
+    "MI_DataH\000B\016\n\014request_data*\362\002\n\007Command\022\013\n"
+    "\007Cmd_Err\020\000\022\037\n\033Cmd_SCard_Establish_Contex"
+    "t\020e\022\031\n\025Cmd_SCard_Reader_List\020f\022\032\n\026Cmd_SC"
+    "ard_Connect_Card\020g\022\035\n\031Cmd_SCard_Disconne"
+    "ct_Card\020h\022\026\n\022Cmd_SCard_Transmit\020i\022\023\n\016Cmd"
+    "_MI_Get_UID\020\311\001\022\024\n\017Cmd_MI_Load_Key\020\312\001\022\032\n\025"
+    "Cmd_MI_Authentication\020\313\001\022\026\n\021Cmd_MI_Read_"
+    "Block\020\314\001\022\027\n\022Cmd_MI_Write_Block\020\315\001\022\025\n\020Cmd"
+    "_MI_Decrement\020\316\001\022\025\n\020Cmd_MI_Increment\020\317\001\022"
+    "\023\n\016Cmd_MI_Restore\020\320\001\022\020\n\013Cmd_MI_HALT\020\321\001*#"
+    "\n\006Sender\022\013\n\007Request\020\000\022\014\n\010Response\020\001*\'\n\006R"
+    "esult\022\013\n\007Success\020\000\022\020\n\014Default_Fail\020cb\006pr"
+    "oto3"
 };
 static ::absl::once_flag descriptor_table_ReaderRequest_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_ReaderRequest_2eproto = {
     false,
     false,
-    1005,
+    1044,
     descriptor_table_protodef_ReaderRequest_2eproto,
     "ReaderRequest.proto",
     &descriptor_table_ReaderRequest_2eproto_once,
@@ -1499,15 +1502,15 @@ const ::google::protobuf::internal::ClassData* ReaderRequest::GetClassData() con
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 7, 4, 0, 2> ReaderRequest::_table_ = {
+const ::_pbi::TcParseTable<2, 8, 4, 0, 2> ReaderRequest::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    7, 24,  // max_field_number, fast_idx_mask
+    8, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967168,  // skipmap
+    4294967040,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    7,  // num_field_entries
+    8,  // num_field_entries
     4,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -1517,38 +1520,43 @@ const ::_pbi::TcParseTable<2, 7, 4, 0, 2> ReaderRequest::_table_ = {
     ::_pbi::TcParser::GetTable<::ReaderRequest::ReaderRequest>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    {::_pbi::TcParser::MiniParse, {}},
+    // .ReaderRequest.Result result = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ReaderRequest, _impl_.result_), 63>(),
+     {32, 63, 0, PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.result_)}},
     // .ReaderRequest.Command cmd = 1;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ReaderRequest, _impl_.cmd_), 63>(),
      {8, 63, 0, PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.cmd_)}},
-    // int32 msgCnt = 2;
+    // .ReaderRequest.Sender sender = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ReaderRequest, _impl_.sender_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.sender_)}},
+    // int32 msgCnt = 3;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ReaderRequest, _impl_.msgcnt_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.msgcnt_)}},
-    // .ReaderRequest.Result result = 3;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ReaderRequest, _impl_.result_), 63>(),
-     {24, 63, 0, PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.result_)}},
+     {24, 63, 0, PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.msgcnt_)}},
   }}, {{
     65535, 65535
   }}, {{
     // .ReaderRequest.Command cmd = 1;
     {PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.cmd_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
-    // int32 msgCnt = 2;
+    // .ReaderRequest.Sender sender = 2;
+    {PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.sender_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+    // int32 msgCnt = 3;
     {PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.msgcnt_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // .ReaderRequest.Result result = 3;
+    // .ReaderRequest.Result result = 4;
     {PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.result_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
-    // .ReaderRequest.Default_Data default_Data = 4;
+    // .ReaderRequest.Default_Data default_Data = 5;
     {PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.request_data_.default_data_), _Internal::kOneofCaseOffset + 0, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .ReaderRequest.SCard_Reader_List_Data scard_Reader_List_Data = 5;
+    // .ReaderRequest.SCard_Reader_List_Data scard_Reader_List_Data = 6;
     {PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.request_data_.scard_reader_list_data_), _Internal::kOneofCaseOffset + 0, 1,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .ReaderRequest.SCard_Transmit_Data scard_Transmit_Data = 6;
+    // .ReaderRequest.SCard_Transmit_Data scard_Transmit_Data = 7;
     {PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.request_data_.scard_transmit_data_), _Internal::kOneofCaseOffset + 0, 2,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .ReaderRequest.MI_Data mi_Data = 7;
+    // .ReaderRequest.MI_Data mi_Data = 8;
     {PROTOBUF_FIELD_OFFSET(ReaderRequest, _impl_.request_data_.mi_data_), _Internal::kOneofCaseOffset + 0, 3,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
@@ -1596,42 +1604,49 @@ PROTOBUF_NOINLINE void ReaderRequest::Clear() {
                 1, this_._internal_cmd(), target);
           }
 
-          // int32 msgCnt = 2;
+          // .ReaderRequest.Sender sender = 2;
+          if (this_._internal_sender() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteEnumToArray(
+                2, this_._internal_sender(), target);
+          }
+
+          // int32 msgCnt = 3;
           if (this_._internal_msgcnt() != 0) {
             target = ::google::protobuf::internal::WireFormatLite::
-                WriteInt32ToArrayWithField<2>(
+                WriteInt32ToArrayWithField<3>(
                     stream, this_._internal_msgcnt(), target);
           }
 
-          // .ReaderRequest.Result result = 3;
+          // .ReaderRequest.Result result = 4;
           if (this_._internal_result() != 0) {
             target = stream->EnsureSpace(target);
             target = ::_pbi::WireFormatLite::WriteEnumToArray(
-                3, this_._internal_result(), target);
+                4, this_._internal_result(), target);
           }
 
           switch (this_.request_data_case()) {
             case kDefaultData: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  4, *this_._impl_.request_data_.default_data_, this_._impl_.request_data_.default_data_->GetCachedSize(), target,
+                  5, *this_._impl_.request_data_.default_data_, this_._impl_.request_data_.default_data_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kScardReaderListData: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  5, *this_._impl_.request_data_.scard_reader_list_data_, this_._impl_.request_data_.scard_reader_list_data_->GetCachedSize(), target,
+                  6, *this_._impl_.request_data_.scard_reader_list_data_, this_._impl_.request_data_.scard_reader_list_data_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kScardTransmitData: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  6, *this_._impl_.request_data_.scard_transmit_data_, this_._impl_.request_data_.scard_transmit_data_->GetCachedSize(), target,
+                  7, *this_._impl_.request_data_.scard_transmit_data_, this_._impl_.request_data_.scard_transmit_data_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kMiData: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  7, *this_._impl_.request_data_.mi_data_, this_._impl_.request_data_.mi_data_->GetCachedSize(), target,
+                  8, *this_._impl_.request_data_.mi_data_, this_._impl_.request_data_.mi_data_->GetCachedSize(), target,
                   stream);
               break;
             }
@@ -1668,37 +1683,42 @@ PROTOBUF_NOINLINE void ReaderRequest::Clear() {
               total_size += 1 +
                             ::_pbi::WireFormatLite::EnumSize(this_._internal_cmd());
             }
-            // int32 msgCnt = 2;
+            // .ReaderRequest.Sender sender = 2;
+            if (this_._internal_sender() != 0) {
+              total_size += 1 +
+                            ::_pbi::WireFormatLite::EnumSize(this_._internal_sender());
+            }
+            // int32 msgCnt = 3;
             if (this_._internal_msgcnt() != 0) {
               total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
                   this_._internal_msgcnt());
             }
-            // .ReaderRequest.Result result = 3;
+            // .ReaderRequest.Result result = 4;
             if (this_._internal_result() != 0) {
               total_size += 1 +
                             ::_pbi::WireFormatLite::EnumSize(this_._internal_result());
             }
           }
           switch (this_.request_data_case()) {
-            // .ReaderRequest.Default_Data default_Data = 4;
+            // .ReaderRequest.Default_Data default_Data = 5;
             case kDefaultData: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_data_.default_data_);
               break;
             }
-            // .ReaderRequest.SCard_Reader_List_Data scard_Reader_List_Data = 5;
+            // .ReaderRequest.SCard_Reader_List_Data scard_Reader_List_Data = 6;
             case kScardReaderListData: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_data_.scard_reader_list_data_);
               break;
             }
-            // .ReaderRequest.SCard_Transmit_Data scard_Transmit_Data = 6;
+            // .ReaderRequest.SCard_Transmit_Data scard_Transmit_Data = 7;
             case kScardTransmitData: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_data_.scard_transmit_data_);
               break;
             }
-            // .ReaderRequest.MI_Data mi_Data = 7;
+            // .ReaderRequest.MI_Data mi_Data = 8;
             case kMiData: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_data_.mi_data_);
@@ -1723,6 +1743,9 @@ void ReaderRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::g
 
   if (from._internal_cmd() != 0) {
     _this->_impl_.cmd_ = from._impl_.cmd_;
+  }
+  if (from._internal_sender() != 0) {
+    _this->_impl_.sender_ = from._impl_.sender_;
   }
   if (from._internal_msgcnt() != 0) {
     _this->_impl_.msgcnt_ = from._impl_.msgcnt_;
