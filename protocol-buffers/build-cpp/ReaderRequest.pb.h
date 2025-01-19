@@ -175,6 +175,39 @@ inline bool Result_Parse(absl::string_view name, Result* value) {
   return ::google::protobuf::internal::ParseNamedEnum<Result>(
       Result_descriptor(), name, value);
 }
+enum DataType : int {
+  Bytes = 0,
+  String = 1,
+  DataType_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::min(),
+  DataType_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::max(),
+};
+
+bool DataType_IsValid(int value);
+extern const uint32_t DataType_internal_data_[];
+constexpr DataType DataType_MIN = static_cast<DataType>(0);
+constexpr DataType DataType_MAX = static_cast<DataType>(1);
+constexpr int DataType_ARRAYSIZE = 1 + 1;
+const ::google::protobuf::EnumDescriptor*
+DataType_descriptor();
+template <typename T>
+const std::string& DataType_Name(T value) {
+  static_assert(std::is_same<T, DataType>::value ||
+                    std::is_integral<T>::value,
+                "Incorrect type passed to DataType_Name().");
+  return DataType_Name(static_cast<DataType>(value));
+}
+template <>
+inline const std::string& DataType_Name(DataType value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<DataType_descriptor,
+                                                 0, 1>(
+      static_cast<int>(value));
+}
+inline bool DataType_Parse(absl::string_view name, DataType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<DataType>(
+      DataType_descriptor(), name, value);
+}
 
 // ===================================================================
 
@@ -240,7 +273,7 @@ class SCard_Transmit_Data final : public ::google::protobuf::Message
     return reinterpret_cast<const SCard_Transmit_Data*>(
         &_SCard_Transmit_Data_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 2;
+  static constexpr int kIndexInFileMessages = 1;
   friend void swap(SCard_Transmit_Data& a, SCard_Transmit_Data& b) { a.Swap(&b); }
   inline void Swap(SCard_Transmit_Data* other) {
     if (other == this) return;
@@ -436,7 +469,7 @@ class SCard_Reader_List_Data final : public ::google::protobuf::Message
     return reinterpret_cast<const SCard_Reader_List_Data*>(
         &_SCard_Reader_List_Data_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 1;
+  static constexpr int kIndexInFileMessages = 0;
   friend void swap(SCard_Reader_List_Data& a, SCard_Reader_List_Data& b) { a.Swap(&b); }
   inline void Swap(SCard_Reader_List_Data* other) {
     if (other == this) return;
@@ -579,6 +612,268 @@ class SCard_Reader_List_Data final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class ReaderRequest final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:ReaderRequest.ReaderRequest) */ {
+ public:
+  inline ReaderRequest() : ReaderRequest(nullptr) {}
+  ~ReaderRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(ReaderRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(ReaderRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR ReaderRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline ReaderRequest(const ReaderRequest& from) : ReaderRequest(nullptr, from) {}
+  inline ReaderRequest(ReaderRequest&& from) noexcept
+      : ReaderRequest(nullptr, std::move(from)) {}
+  inline ReaderRequest& operator=(const ReaderRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ReaderRequest& operator=(ReaderRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ReaderRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ReaderRequest* internal_default_instance() {
+    return reinterpret_cast<const ReaderRequest*>(
+        &_ReaderRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 4;
+  friend void swap(ReaderRequest& a, ReaderRequest& b) { a.Swap(&b); }
+  inline void Swap(ReaderRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ReaderRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ReaderRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<ReaderRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ReaderRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const ReaderRequest& from) { ReaderRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(ReaderRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "ReaderRequest.ReaderRequest"; }
+
+ protected:
+  explicit ReaderRequest(::google::protobuf::Arena* arena);
+  ReaderRequest(::google::protobuf::Arena* arena, const ReaderRequest& from);
+  ReaderRequest(::google::protobuf::Arena* arena, ReaderRequest&& from) noexcept
+      : ReaderRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kDataFieldNumber = 6,
+    kCmdFieldNumber = 1,
+    kSenderFieldNumber = 2,
+    kMsgCntFieldNumber = 3,
+    kResultFieldNumber = 4,
+    kDataLengthFieldNumber = 5,
+  };
+  // repeated string data = 6;
+  int data_size() const;
+  private:
+  int _internal_data_size() const;
+
+  public:
+  void clear_data() ;
+  const std::string& data(int index) const;
+  std::string* mutable_data(int index);
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_data(int index, Arg_&& value, Args_... args);
+  std::string* add_data();
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void add_data(Arg_&& value, Args_... args);
+  const ::google::protobuf::RepeatedPtrField<std::string>& data() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_data();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_data() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_data();
+
+  public:
+  // .ReaderRequest.Command cmd = 1;
+  void clear_cmd() ;
+  ::ReaderRequest::Command cmd() const;
+  void set_cmd(::ReaderRequest::Command value);
+
+  private:
+  ::ReaderRequest::Command _internal_cmd() const;
+  void _internal_set_cmd(::ReaderRequest::Command value);
+
+  public:
+  // .ReaderRequest.Sender sender = 2;
+  void clear_sender() ;
+  ::ReaderRequest::Sender sender() const;
+  void set_sender(::ReaderRequest::Sender value);
+
+  private:
+  ::ReaderRequest::Sender _internal_sender() const;
+  void _internal_set_sender(::ReaderRequest::Sender value);
+
+  public:
+  // int32 msgCnt = 3;
+  void clear_msgcnt() ;
+  ::int32_t msgcnt() const;
+  void set_msgcnt(::int32_t value);
+
+  private:
+  ::int32_t _internal_msgcnt() const;
+  void _internal_set_msgcnt(::int32_t value);
+
+  public:
+  // .ReaderRequest.Result result = 4;
+  void clear_result() ;
+  ::ReaderRequest::Result result() const;
+  void set_result(::ReaderRequest::Result value);
+
+  private:
+  ::ReaderRequest::Result _internal_result() const;
+  void _internal_set_result(::ReaderRequest::Result value);
+
+  public:
+  // int32 dataLength = 5;
+  void clear_datalength() ;
+  ::int32_t datalength() const;
+  void set_datalength(::int32_t value);
+
+  private:
+  ::int32_t _internal_datalength() const;
+  void _internal_set_datalength(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:ReaderRequest.ReaderRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      3, 6, 0,
+      40, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const ReaderRequest& from_msg);
+    ::google::protobuf::RepeatedPtrField<std::string> data_;
+    int cmd_;
+    int sender_;
+    ::int32_t msgcnt_;
+    int result_;
+    ::int32_t datalength_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_ReaderRequest_2eproto;
+};
+// -------------------------------------------------------------------
+
 class MI_Data final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:ReaderRequest.MI_Data) */ {
  public:
@@ -638,7 +933,7 @@ class MI_Data final : public ::google::protobuf::Message
     return reinterpret_cast<const MI_Data*>(
         &_MI_Data_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 3;
+  static constexpr int kIndexInFileMessages = 2;
   friend void swap(MI_Data& a, MI_Data& b) { a.Swap(&b); }
   inline void Swap(MI_Data* other) {
     if (other == this) return;
@@ -846,7 +1141,7 @@ class Default_Data final : public ::google::protobuf::Message
     return reinterpret_cast<const Default_Data*>(
         &_Default_Data_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 0;
+  static constexpr int kIndexInFileMessages = 3;
   friend void swap(Default_Data& a, Default_Data& b) { a.Swap(&b); }
   inline void Swap(Default_Data* other) {
     if (other == this) return;
@@ -987,336 +1282,6 @@ class Default_Data final : public ::google::protobuf::Message
   union { Impl_ _impl_; };
   friend struct ::TableStruct_ReaderRequest_2eproto;
 };
-// -------------------------------------------------------------------
-
-class ReaderRequest final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:ReaderRequest.ReaderRequest) */ {
- public:
-  inline ReaderRequest() : ReaderRequest(nullptr) {}
-  ~ReaderRequest() PROTOBUF_FINAL;
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-  void operator delete(ReaderRequest* msg, std::destroying_delete_t) {
-    SharedDtor(*msg);
-    ::google::protobuf::internal::SizedDelete(msg, sizeof(ReaderRequest));
-  }
-#endif
-
-  template <typename = void>
-  explicit PROTOBUF_CONSTEXPR ReaderRequest(
-      ::google::protobuf::internal::ConstantInitialized);
-
-  inline ReaderRequest(const ReaderRequest& from) : ReaderRequest(nullptr, from) {}
-  inline ReaderRequest(ReaderRequest&& from) noexcept
-      : ReaderRequest(nullptr, std::move(from)) {}
-  inline ReaderRequest& operator=(const ReaderRequest& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline ReaderRequest& operator=(ReaderRequest&& from) noexcept {
-    if (this == &from) return *this;
-    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const ReaderRequest& default_instance() {
-    return *internal_default_instance();
-  }
-  enum RequestDataCase {
-    kDefaultData = 5,
-    kScardReaderListData = 6,
-    kScardTransmitData = 7,
-    kMiData = 8,
-    REQUEST_DATA_NOT_SET = 0,
-  };
-  static inline const ReaderRequest* internal_default_instance() {
-    return reinterpret_cast<const ReaderRequest*>(
-        &_ReaderRequest_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages = 4;
-  friend void swap(ReaderRequest& a, ReaderRequest& b) { a.Swap(&b); }
-  inline void Swap(ReaderRequest* other) {
-    if (other == this) return;
-    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(ReaderRequest* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  ReaderRequest* New(::google::protobuf::Arena* arena = nullptr) const {
-    return ::google::protobuf::Message::DefaultConstruct<ReaderRequest>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const ReaderRequest& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom(const ReaderRequest& from) { ReaderRequest::MergeImpl(*this, from); }
-
-  private:
-  static void MergeImpl(
-      ::google::protobuf::MessageLite& to_msg,
-      const ::google::protobuf::MessageLite& from_msg);
-
-  public:
-  bool IsInitialized() const {
-    return true;
-  }
-  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
-  #if defined(PROTOBUF_CUSTOM_VTABLE)
-  private:
-  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
-  static ::uint8_t* _InternalSerialize(
-      const MessageLite& msg, ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream);
-
-  public:
-  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-    return _InternalSerialize(*this, target, stream);
-  }
-  #else   // PROTOBUF_CUSTOM_VTABLE
-  ::size_t ByteSizeLong() const final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  #endif  // PROTOBUF_CUSTOM_VTABLE
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::google::protobuf::Arena* arena);
-  static void SharedDtor(MessageLite& self);
-  void InternalSwap(ReaderRequest* other);
- private:
-  template <typename T>
-  friend ::absl::string_view(
-      ::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "ReaderRequest.ReaderRequest"; }
-
- protected:
-  explicit ReaderRequest(::google::protobuf::Arena* arena);
-  ReaderRequest(::google::protobuf::Arena* arena, const ReaderRequest& from);
-  ReaderRequest(::google::protobuf::Arena* arena, ReaderRequest&& from) noexcept
-      : ReaderRequest(arena) {
-    *this = ::std::move(from);
-  }
-  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
-  static void* PlacementNew_(const void*, void* mem,
-                             ::google::protobuf::Arena* arena);
-  static constexpr auto InternalNewImpl_();
-  static const ::google::protobuf::internal::ClassDataFull _class_data_;
-
- public:
-  ::google::protobuf::Metadata GetMetadata() const;
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-  enum : int {
-    kCmdFieldNumber = 1,
-    kSenderFieldNumber = 2,
-    kMsgCntFieldNumber = 3,
-    kResultFieldNumber = 4,
-    kDefaultDataFieldNumber = 5,
-    kScardReaderListDataFieldNumber = 6,
-    kScardTransmitDataFieldNumber = 7,
-    kMiDataFieldNumber = 8,
-  };
-  // .ReaderRequest.Command cmd = 1;
-  void clear_cmd() ;
-  ::ReaderRequest::Command cmd() const;
-  void set_cmd(::ReaderRequest::Command value);
-
-  private:
-  ::ReaderRequest::Command _internal_cmd() const;
-  void _internal_set_cmd(::ReaderRequest::Command value);
-
-  public:
-  // .ReaderRequest.Sender sender = 2;
-  void clear_sender() ;
-  ::ReaderRequest::Sender sender() const;
-  void set_sender(::ReaderRequest::Sender value);
-
-  private:
-  ::ReaderRequest::Sender _internal_sender() const;
-  void _internal_set_sender(::ReaderRequest::Sender value);
-
-  public:
-  // int32 msgCnt = 3;
-  void clear_msgcnt() ;
-  ::int32_t msgcnt() const;
-  void set_msgcnt(::int32_t value);
-
-  private:
-  ::int32_t _internal_msgcnt() const;
-  void _internal_set_msgcnt(::int32_t value);
-
-  public:
-  // .ReaderRequest.Result result = 4;
-  void clear_result() ;
-  ::ReaderRequest::Result result() const;
-  void set_result(::ReaderRequest::Result value);
-
-  private:
-  ::ReaderRequest::Result _internal_result() const;
-  void _internal_set_result(::ReaderRequest::Result value);
-
-  public:
-  // .ReaderRequest.Default_Data default_Data = 5;
-  bool has_default_data() const;
-  private:
-  bool _internal_has_default_data() const;
-
-  public:
-  void clear_default_data() ;
-  const ::ReaderRequest::Default_Data& default_data() const;
-  PROTOBUF_NODISCARD ::ReaderRequest::Default_Data* release_default_data();
-  ::ReaderRequest::Default_Data* mutable_default_data();
-  void set_allocated_default_data(::ReaderRequest::Default_Data* value);
-  void unsafe_arena_set_allocated_default_data(::ReaderRequest::Default_Data* value);
-  ::ReaderRequest::Default_Data* unsafe_arena_release_default_data();
-
-  private:
-  const ::ReaderRequest::Default_Data& _internal_default_data() const;
-  ::ReaderRequest::Default_Data* _internal_mutable_default_data();
-
-  public:
-  // .ReaderRequest.SCard_Reader_List_Data scard_Reader_List_Data = 6;
-  bool has_scard_reader_list_data() const;
-  private:
-  bool _internal_has_scard_reader_list_data() const;
-
-  public:
-  void clear_scard_reader_list_data() ;
-  const ::ReaderRequest::SCard_Reader_List_Data& scard_reader_list_data() const;
-  PROTOBUF_NODISCARD ::ReaderRequest::SCard_Reader_List_Data* release_scard_reader_list_data();
-  ::ReaderRequest::SCard_Reader_List_Data* mutable_scard_reader_list_data();
-  void set_allocated_scard_reader_list_data(::ReaderRequest::SCard_Reader_List_Data* value);
-  void unsafe_arena_set_allocated_scard_reader_list_data(::ReaderRequest::SCard_Reader_List_Data* value);
-  ::ReaderRequest::SCard_Reader_List_Data* unsafe_arena_release_scard_reader_list_data();
-
-  private:
-  const ::ReaderRequest::SCard_Reader_List_Data& _internal_scard_reader_list_data() const;
-  ::ReaderRequest::SCard_Reader_List_Data* _internal_mutable_scard_reader_list_data();
-
-  public:
-  // .ReaderRequest.SCard_Transmit_Data scard_Transmit_Data = 7;
-  bool has_scard_transmit_data() const;
-  private:
-  bool _internal_has_scard_transmit_data() const;
-
-  public:
-  void clear_scard_transmit_data() ;
-  const ::ReaderRequest::SCard_Transmit_Data& scard_transmit_data() const;
-  PROTOBUF_NODISCARD ::ReaderRequest::SCard_Transmit_Data* release_scard_transmit_data();
-  ::ReaderRequest::SCard_Transmit_Data* mutable_scard_transmit_data();
-  void set_allocated_scard_transmit_data(::ReaderRequest::SCard_Transmit_Data* value);
-  void unsafe_arena_set_allocated_scard_transmit_data(::ReaderRequest::SCard_Transmit_Data* value);
-  ::ReaderRequest::SCard_Transmit_Data* unsafe_arena_release_scard_transmit_data();
-
-  private:
-  const ::ReaderRequest::SCard_Transmit_Data& _internal_scard_transmit_data() const;
-  ::ReaderRequest::SCard_Transmit_Data* _internal_mutable_scard_transmit_data();
-
-  public:
-  // .ReaderRequest.MI_Data mi_Data = 8;
-  bool has_mi_data() const;
-  private:
-  bool _internal_has_mi_data() const;
-
-  public:
-  void clear_mi_data() ;
-  const ::ReaderRequest::MI_Data& mi_data() const;
-  PROTOBUF_NODISCARD ::ReaderRequest::MI_Data* release_mi_data();
-  ::ReaderRequest::MI_Data* mutable_mi_data();
-  void set_allocated_mi_data(::ReaderRequest::MI_Data* value);
-  void unsafe_arena_set_allocated_mi_data(::ReaderRequest::MI_Data* value);
-  ::ReaderRequest::MI_Data* unsafe_arena_release_mi_data();
-
-  private:
-  const ::ReaderRequest::MI_Data& _internal_mi_data() const;
-  ::ReaderRequest::MI_Data* _internal_mutable_mi_data();
-
-  public:
-  void clear_request_data();
-  RequestDataCase request_data_case() const;
-  // @@protoc_insertion_point(class_scope:ReaderRequest.ReaderRequest)
- private:
-  class _Internal;
-  void set_has_default_data();
-  void set_has_scard_reader_list_data();
-  void set_has_scard_transmit_data();
-  void set_has_mi_data();
-  inline bool has_request_data() const;
-  inline void clear_has_request_data();
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      2, 8, 4,
-      0, 2>
-      _table_;
-
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-    inline explicit constexpr Impl_(
-        ::google::protobuf::internal::ConstantInitialized) noexcept;
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena);
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena, const Impl_& from,
-                          const ReaderRequest& from_msg);
-    int cmd_;
-    int sender_;
-    ::int32_t msgcnt_;
-    int result_;
-    union RequestDataUnion {
-      constexpr RequestDataUnion() : _constinit_{} {}
-      ::google::protobuf::internal::ConstantInitialized _constinit_;
-      ::ReaderRequest::Default_Data* default_data_;
-      ::ReaderRequest::SCard_Reader_List_Data* scard_reader_list_data_;
-      ::ReaderRequest::SCard_Transmit_Data* scard_transmit_data_;
-      ::ReaderRequest::MI_Data* mi_data_;
-    } request_data_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
-    ::uint32_t _oneof_case_[1];
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_ReaderRequest_2eproto;
-};
 
 // ===================================================================
 
@@ -1330,74 +1295,6 @@ class ReaderRequest final : public ::google::protobuf::Message
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
-// Default_Data
-
-// repeated string data = 1;
-inline int Default_Data::_internal_data_size() const {
-  return _internal_data().size();
-}
-inline int Default_Data::data_size() const {
-  return _internal_data_size();
-}
-inline void Default_Data::clear_data() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.data_.Clear();
-}
-inline std::string* Default_Data::add_data() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  std::string* _s = _internal_mutable_data()->Add();
-  // @@protoc_insertion_point(field_add_mutable:ReaderRequest.Default_Data.data)
-  return _s;
-}
-inline const std::string& Default_Data::data(int index) const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:ReaderRequest.Default_Data.data)
-  return _internal_data().Get(index);
-}
-inline std::string* Default_Data::mutable_data(int index)
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable:ReaderRequest.Default_Data.data)
-  return _internal_mutable_data()->Mutable(index);
-}
-template <typename Arg_, typename... Args_>
-inline void Default_Data::set_data(int index, Arg_&& value, Args_... args) {
-  ::google::protobuf::internal::AssignToString(
-      *_internal_mutable_data()->Mutable(index),
-      std::forward<Arg_>(value), args... );
-  // @@protoc_insertion_point(field_set:ReaderRequest.Default_Data.data)
-}
-template <typename Arg_, typename... Args_>
-inline void Default_Data::add_data(Arg_&& value, Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_data(),
-                               std::forward<Arg_>(value),
-                               args... );
-  // @@protoc_insertion_point(field_add:ReaderRequest.Default_Data.data)
-}
-inline const ::google::protobuf::RepeatedPtrField<std::string>&
-Default_Data::data() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_list:ReaderRequest.Default_Data.data)
-  return _internal_data();
-}
-inline ::google::protobuf::RepeatedPtrField<std::string>*
-Default_Data::mutable_data() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable_list:ReaderRequest.Default_Data.data)
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _internal_mutable_data();
-}
-inline const ::google::protobuf::RepeatedPtrField<std::string>&
-Default_Data::_internal_data() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.data_;
-}
-inline ::google::protobuf::RepeatedPtrField<std::string>*
-Default_Data::_internal_mutable_data() {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return &_impl_.data_;
-}
-
 // -------------------------------------------------------------------
 
 // SCard_Reader_List_Data
@@ -1594,6 +1491,74 @@ inline void MI_Data::set_allocated_data(std::string* value) {
 
 // -------------------------------------------------------------------
 
+// Default_Data
+
+// repeated string data = 1;
+inline int Default_Data::_internal_data_size() const {
+  return _internal_data().size();
+}
+inline int Default_Data::data_size() const {
+  return _internal_data_size();
+}
+inline void Default_Data::clear_data() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.data_.Clear();
+}
+inline std::string* Default_Data::add_data() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  std::string* _s = _internal_mutable_data()->Add();
+  // @@protoc_insertion_point(field_add_mutable:ReaderRequest.Default_Data.data)
+  return _s;
+}
+inline const std::string& Default_Data::data(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:ReaderRequest.Default_Data.data)
+  return _internal_data().Get(index);
+}
+inline std::string* Default_Data::mutable_data(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:ReaderRequest.Default_Data.data)
+  return _internal_mutable_data()->Mutable(index);
+}
+template <typename Arg_, typename... Args_>
+inline void Default_Data::set_data(int index, Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::AssignToString(
+      *_internal_mutable_data()->Mutable(index),
+      std::forward<Arg_>(value), args... );
+  // @@protoc_insertion_point(field_set:ReaderRequest.Default_Data.data)
+}
+template <typename Arg_, typename... Args_>
+inline void Default_Data::add_data(Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_data(),
+                               std::forward<Arg_>(value),
+                               args... );
+  // @@protoc_insertion_point(field_add:ReaderRequest.Default_Data.data)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+Default_Data::data() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:ReaderRequest.Default_Data.data)
+  return _internal_data();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+Default_Data::mutable_data() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:ReaderRequest.Default_Data.data)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_data();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+Default_Data::_internal_data() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.data_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+Default_Data::_internal_mutable_data() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.data_;
+}
+
+// -------------------------------------------------------------------
+
 // ReaderRequest
 
 // .ReaderRequest.Command cmd = 1;
@@ -1684,331 +1649,92 @@ inline void ReaderRequest::_internal_set_result(::ReaderRequest::Result value) {
   _impl_.result_ = value;
 }
 
-// .ReaderRequest.Default_Data default_Data = 5;
-inline bool ReaderRequest::has_default_data() const {
-  return request_data_case() == kDefaultData;
-}
-inline bool ReaderRequest::_internal_has_default_data() const {
-  return request_data_case() == kDefaultData;
-}
-inline void ReaderRequest::set_has_default_data() {
-  _impl_._oneof_case_[0] = kDefaultData;
-}
-inline void ReaderRequest::clear_default_data() {
+// int32 dataLength = 5;
+inline void ReaderRequest::clear_datalength() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (request_data_case() == kDefaultData) {
-    if (GetArena() == nullptr) {
-      delete _impl_.request_data_.default_data_;
-    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
-      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_data_.default_data_);
-    }
-    clear_has_request_data();
-  }
+  _impl_.datalength_ = 0;
 }
-inline ::ReaderRequest::Default_Data* ReaderRequest::release_default_data() {
-  // @@protoc_insertion_point(field_release:ReaderRequest.ReaderRequest.default_Data)
-  if (request_data_case() == kDefaultData) {
-    clear_has_request_data();
-    auto* temp = _impl_.request_data_.default_data_;
-    if (GetArena() != nullptr) {
-      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
-    }
-    _impl_.request_data_.default_data_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
+inline ::int32_t ReaderRequest::datalength() const {
+  // @@protoc_insertion_point(field_get:ReaderRequest.ReaderRequest.dataLength)
+  return _internal_datalength();
 }
-inline const ::ReaderRequest::Default_Data& ReaderRequest::_internal_default_data() const {
-  return request_data_case() == kDefaultData ? *_impl_.request_data_.default_data_ : reinterpret_cast<::ReaderRequest::Default_Data&>(::ReaderRequest::_Default_Data_default_instance_);
+inline void ReaderRequest::set_datalength(::int32_t value) {
+  _internal_set_datalength(value);
+  // @@protoc_insertion_point(field_set:ReaderRequest.ReaderRequest.dataLength)
 }
-inline const ::ReaderRequest::Default_Data& ReaderRequest::default_data() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:ReaderRequest.ReaderRequest.default_Data)
-  return _internal_default_data();
+inline ::int32_t ReaderRequest::_internal_datalength() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.datalength_;
 }
-inline ::ReaderRequest::Default_Data* ReaderRequest::unsafe_arena_release_default_data() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:ReaderRequest.ReaderRequest.default_Data)
-  if (request_data_case() == kDefaultData) {
-    clear_has_request_data();
-    auto* temp = _impl_.request_data_.default_data_;
-    _impl_.request_data_.default_data_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline void ReaderRequest::unsafe_arena_set_allocated_default_data(::ReaderRequest::Default_Data* value) {
-  // We rely on the oneof clear method to free the earlier contents
-  // of this oneof. We can directly use the pointer we're given to
-  // set the new value.
-  clear_request_data();
-  if (value) {
-    set_has_default_data();
-    _impl_.request_data_.default_data_ = value;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:ReaderRequest.ReaderRequest.default_Data)
-}
-inline ::ReaderRequest::Default_Data* ReaderRequest::_internal_mutable_default_data() {
-  if (request_data_case() != kDefaultData) {
-    clear_request_data();
-    set_has_default_data();
-    _impl_.request_data_.default_data_ =
-        ::google::protobuf::Message::DefaultConstruct<::ReaderRequest::Default_Data>(GetArena());
-  }
-  return _impl_.request_data_.default_data_;
-}
-inline ::ReaderRequest::Default_Data* ReaderRequest::mutable_default_data() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::ReaderRequest::Default_Data* _msg = _internal_mutable_default_data();
-  // @@protoc_insertion_point(field_mutable:ReaderRequest.ReaderRequest.default_Data)
-  return _msg;
+inline void ReaderRequest::_internal_set_datalength(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.datalength_ = value;
 }
 
-// .ReaderRequest.SCard_Reader_List_Data scard_Reader_List_Data = 6;
-inline bool ReaderRequest::has_scard_reader_list_data() const {
-  return request_data_case() == kScardReaderListData;
+// repeated string data = 6;
+inline int ReaderRequest::_internal_data_size() const {
+  return _internal_data().size();
 }
-inline bool ReaderRequest::_internal_has_scard_reader_list_data() const {
-  return request_data_case() == kScardReaderListData;
+inline int ReaderRequest::data_size() const {
+  return _internal_data_size();
 }
-inline void ReaderRequest::set_has_scard_reader_list_data() {
-  _impl_._oneof_case_[0] = kScardReaderListData;
-}
-inline void ReaderRequest::clear_scard_reader_list_data() {
+inline void ReaderRequest::clear_data() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (request_data_case() == kScardReaderListData) {
-    if (GetArena() == nullptr) {
-      delete _impl_.request_data_.scard_reader_list_data_;
-    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
-      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_data_.scard_reader_list_data_);
-    }
-    clear_has_request_data();
-  }
+  _impl_.data_.Clear();
 }
-inline ::ReaderRequest::SCard_Reader_List_Data* ReaderRequest::release_scard_reader_list_data() {
-  // @@protoc_insertion_point(field_release:ReaderRequest.ReaderRequest.scard_Reader_List_Data)
-  if (request_data_case() == kScardReaderListData) {
-    clear_has_request_data();
-    auto* temp = _impl_.request_data_.scard_reader_list_data_;
-    if (GetArena() != nullptr) {
-      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
-    }
-    _impl_.request_data_.scard_reader_list_data_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
+inline std::string* ReaderRequest::add_data() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  std::string* _s = _internal_mutable_data()->Add();
+  // @@protoc_insertion_point(field_add_mutable:ReaderRequest.ReaderRequest.data)
+  return _s;
 }
-inline const ::ReaderRequest::SCard_Reader_List_Data& ReaderRequest::_internal_scard_reader_list_data() const {
-  return request_data_case() == kScardReaderListData ? *_impl_.request_data_.scard_reader_list_data_ : reinterpret_cast<::ReaderRequest::SCard_Reader_List_Data&>(::ReaderRequest::_SCard_Reader_List_Data_default_instance_);
+inline const std::string& ReaderRequest::data(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:ReaderRequest.ReaderRequest.data)
+  return _internal_data().Get(index);
 }
-inline const ::ReaderRequest::SCard_Reader_List_Data& ReaderRequest::scard_reader_list_data() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:ReaderRequest.ReaderRequest.scard_Reader_List_Data)
-  return _internal_scard_reader_list_data();
+inline std::string* ReaderRequest::mutable_data(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:ReaderRequest.ReaderRequest.data)
+  return _internal_mutable_data()->Mutable(index);
 }
-inline ::ReaderRequest::SCard_Reader_List_Data* ReaderRequest::unsafe_arena_release_scard_reader_list_data() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:ReaderRequest.ReaderRequest.scard_Reader_List_Data)
-  if (request_data_case() == kScardReaderListData) {
-    clear_has_request_data();
-    auto* temp = _impl_.request_data_.scard_reader_list_data_;
-    _impl_.request_data_.scard_reader_list_data_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
+template <typename Arg_, typename... Args_>
+inline void ReaderRequest::set_data(int index, Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::AssignToString(
+      *_internal_mutable_data()->Mutable(index),
+      std::forward<Arg_>(value), args... );
+  // @@protoc_insertion_point(field_set:ReaderRequest.ReaderRequest.data)
 }
-inline void ReaderRequest::unsafe_arena_set_allocated_scard_reader_list_data(::ReaderRequest::SCard_Reader_List_Data* value) {
-  // We rely on the oneof clear method to free the earlier contents
-  // of this oneof. We can directly use the pointer we're given to
-  // set the new value.
-  clear_request_data();
-  if (value) {
-    set_has_scard_reader_list_data();
-    _impl_.request_data_.scard_reader_list_data_ = value;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:ReaderRequest.ReaderRequest.scard_Reader_List_Data)
+template <typename Arg_, typename... Args_>
+inline void ReaderRequest::add_data(Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_data(),
+                               std::forward<Arg_>(value),
+                               args... );
+  // @@protoc_insertion_point(field_add:ReaderRequest.ReaderRequest.data)
 }
-inline ::ReaderRequest::SCard_Reader_List_Data* ReaderRequest::_internal_mutable_scard_reader_list_data() {
-  if (request_data_case() != kScardReaderListData) {
-    clear_request_data();
-    set_has_scard_reader_list_data();
-    _impl_.request_data_.scard_reader_list_data_ =
-        ::google::protobuf::Message::DefaultConstruct<::ReaderRequest::SCard_Reader_List_Data>(GetArena());
-  }
-  return _impl_.request_data_.scard_reader_list_data_;
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+ReaderRequest::data() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:ReaderRequest.ReaderRequest.data)
+  return _internal_data();
 }
-inline ::ReaderRequest::SCard_Reader_List_Data* ReaderRequest::mutable_scard_reader_list_data() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::ReaderRequest::SCard_Reader_List_Data* _msg = _internal_mutable_scard_reader_list_data();
-  // @@protoc_insertion_point(field_mutable:ReaderRequest.ReaderRequest.scard_Reader_List_Data)
-  return _msg;
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+ReaderRequest::mutable_data() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:ReaderRequest.ReaderRequest.data)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_data();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+ReaderRequest::_internal_data() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.data_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+ReaderRequest::_internal_mutable_data() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.data_;
 }
 
-// .ReaderRequest.SCard_Transmit_Data scard_Transmit_Data = 7;
-inline bool ReaderRequest::has_scard_transmit_data() const {
-  return request_data_case() == kScardTransmitData;
-}
-inline bool ReaderRequest::_internal_has_scard_transmit_data() const {
-  return request_data_case() == kScardTransmitData;
-}
-inline void ReaderRequest::set_has_scard_transmit_data() {
-  _impl_._oneof_case_[0] = kScardTransmitData;
-}
-inline void ReaderRequest::clear_scard_transmit_data() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (request_data_case() == kScardTransmitData) {
-    if (GetArena() == nullptr) {
-      delete _impl_.request_data_.scard_transmit_data_;
-    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
-      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_data_.scard_transmit_data_);
-    }
-    clear_has_request_data();
-  }
-}
-inline ::ReaderRequest::SCard_Transmit_Data* ReaderRequest::release_scard_transmit_data() {
-  // @@protoc_insertion_point(field_release:ReaderRequest.ReaderRequest.scard_Transmit_Data)
-  if (request_data_case() == kScardTransmitData) {
-    clear_has_request_data();
-    auto* temp = _impl_.request_data_.scard_transmit_data_;
-    if (GetArena() != nullptr) {
-      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
-    }
-    _impl_.request_data_.scard_transmit_data_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline const ::ReaderRequest::SCard_Transmit_Data& ReaderRequest::_internal_scard_transmit_data() const {
-  return request_data_case() == kScardTransmitData ? *_impl_.request_data_.scard_transmit_data_ : reinterpret_cast<::ReaderRequest::SCard_Transmit_Data&>(::ReaderRequest::_SCard_Transmit_Data_default_instance_);
-}
-inline const ::ReaderRequest::SCard_Transmit_Data& ReaderRequest::scard_transmit_data() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:ReaderRequest.ReaderRequest.scard_Transmit_Data)
-  return _internal_scard_transmit_data();
-}
-inline ::ReaderRequest::SCard_Transmit_Data* ReaderRequest::unsafe_arena_release_scard_transmit_data() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:ReaderRequest.ReaderRequest.scard_Transmit_Data)
-  if (request_data_case() == kScardTransmitData) {
-    clear_has_request_data();
-    auto* temp = _impl_.request_data_.scard_transmit_data_;
-    _impl_.request_data_.scard_transmit_data_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline void ReaderRequest::unsafe_arena_set_allocated_scard_transmit_data(::ReaderRequest::SCard_Transmit_Data* value) {
-  // We rely on the oneof clear method to free the earlier contents
-  // of this oneof. We can directly use the pointer we're given to
-  // set the new value.
-  clear_request_data();
-  if (value) {
-    set_has_scard_transmit_data();
-    _impl_.request_data_.scard_transmit_data_ = value;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:ReaderRequest.ReaderRequest.scard_Transmit_Data)
-}
-inline ::ReaderRequest::SCard_Transmit_Data* ReaderRequest::_internal_mutable_scard_transmit_data() {
-  if (request_data_case() != kScardTransmitData) {
-    clear_request_data();
-    set_has_scard_transmit_data();
-    _impl_.request_data_.scard_transmit_data_ =
-        ::google::protobuf::Message::DefaultConstruct<::ReaderRequest::SCard_Transmit_Data>(GetArena());
-  }
-  return _impl_.request_data_.scard_transmit_data_;
-}
-inline ::ReaderRequest::SCard_Transmit_Data* ReaderRequest::mutable_scard_transmit_data() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::ReaderRequest::SCard_Transmit_Data* _msg = _internal_mutable_scard_transmit_data();
-  // @@protoc_insertion_point(field_mutable:ReaderRequest.ReaderRequest.scard_Transmit_Data)
-  return _msg;
-}
-
-// .ReaderRequest.MI_Data mi_Data = 8;
-inline bool ReaderRequest::has_mi_data() const {
-  return request_data_case() == kMiData;
-}
-inline bool ReaderRequest::_internal_has_mi_data() const {
-  return request_data_case() == kMiData;
-}
-inline void ReaderRequest::set_has_mi_data() {
-  _impl_._oneof_case_[0] = kMiData;
-}
-inline void ReaderRequest::clear_mi_data() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (request_data_case() == kMiData) {
-    if (GetArena() == nullptr) {
-      delete _impl_.request_data_.mi_data_;
-    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
-      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_data_.mi_data_);
-    }
-    clear_has_request_data();
-  }
-}
-inline ::ReaderRequest::MI_Data* ReaderRequest::release_mi_data() {
-  // @@protoc_insertion_point(field_release:ReaderRequest.ReaderRequest.mi_Data)
-  if (request_data_case() == kMiData) {
-    clear_has_request_data();
-    auto* temp = _impl_.request_data_.mi_data_;
-    if (GetArena() != nullptr) {
-      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
-    }
-    _impl_.request_data_.mi_data_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline const ::ReaderRequest::MI_Data& ReaderRequest::_internal_mi_data() const {
-  return request_data_case() == kMiData ? *_impl_.request_data_.mi_data_ : reinterpret_cast<::ReaderRequest::MI_Data&>(::ReaderRequest::_MI_Data_default_instance_);
-}
-inline const ::ReaderRequest::MI_Data& ReaderRequest::mi_data() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:ReaderRequest.ReaderRequest.mi_Data)
-  return _internal_mi_data();
-}
-inline ::ReaderRequest::MI_Data* ReaderRequest::unsafe_arena_release_mi_data() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:ReaderRequest.ReaderRequest.mi_Data)
-  if (request_data_case() == kMiData) {
-    clear_has_request_data();
-    auto* temp = _impl_.request_data_.mi_data_;
-    _impl_.request_data_.mi_data_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline void ReaderRequest::unsafe_arena_set_allocated_mi_data(::ReaderRequest::MI_Data* value) {
-  // We rely on the oneof clear method to free the earlier contents
-  // of this oneof. We can directly use the pointer we're given to
-  // set the new value.
-  clear_request_data();
-  if (value) {
-    set_has_mi_data();
-    _impl_.request_data_.mi_data_ = value;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:ReaderRequest.ReaderRequest.mi_Data)
-}
-inline ::ReaderRequest::MI_Data* ReaderRequest::_internal_mutable_mi_data() {
-  if (request_data_case() != kMiData) {
-    clear_request_data();
-    set_has_mi_data();
-    _impl_.request_data_.mi_data_ =
-        ::google::protobuf::Message::DefaultConstruct<::ReaderRequest::MI_Data>(GetArena());
-  }
-  return _impl_.request_data_.mi_data_;
-}
-inline ::ReaderRequest::MI_Data* ReaderRequest::mutable_mi_data() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::ReaderRequest::MI_Data* _msg = _internal_mutable_mi_data();
-  // @@protoc_insertion_point(field_mutable:ReaderRequest.ReaderRequest.mi_Data)
-  return _msg;
-}
-
-inline bool ReaderRequest::has_request_data() const {
-  return request_data_case() != REQUEST_DATA_NOT_SET;
-}
-inline void ReaderRequest::clear_has_request_data() {
-  _impl_._oneof_case_[0] = REQUEST_DATA_NOT_SET;
-}
-inline ReaderRequest::RequestDataCase ReaderRequest::request_data_case() const {
-  return ReaderRequest::RequestDataCase(_impl_._oneof_case_[0]);
-}
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif  // __GNUC__
@@ -2037,6 +1763,12 @@ struct is_proto_enum<::ReaderRequest::Result> : std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor<::ReaderRequest::Result>() {
   return ::ReaderRequest::Result_descriptor();
+}
+template <>
+struct is_proto_enum<::ReaderRequest::DataType> : std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor<::ReaderRequest::DataType>() {
+  return ::ReaderRequest::DataType_descriptor();
 }
 
 }  // namespace protobuf

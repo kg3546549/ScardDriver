@@ -31,6 +31,11 @@ enum Result {
     Default_Fail = 99;
 }
 
+enum DataType {
+    Bytes = 0;
+    String = 1;
+}
+
 
 
 
@@ -56,11 +61,6 @@ message ReaderRequest {
     Sender sender = 2;
     int32 msgCnt = 3;
     Result result = 4;
-    oneof request_data {
-        Default_Data default_Data = 5;
-        SCard_Reader_List_Data scard_Reader_List_Data = 6;
-        SCard_Transmit_Data scard_Transmit_Data = 7;
-
-        MI_Data mi_Data = 8;
-    }
+    int32 dataLength = 5;
+    repeated string data = 6;
 }

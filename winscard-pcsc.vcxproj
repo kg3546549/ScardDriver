@@ -115,14 +115,14 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)\protocol-buffers\build-cpp\;$(SolutionDir)\vcpkg_installed\x64-windows-static\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\vcpkg_installed\x64-windows-static\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>winscard.lib;libprotobuf.lib;libprotoc.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\vcpkg\installed\x64-windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>winscard.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)vcpkg_installed\x64-windows-static\x64-windows\lib\;$(SolutionDir)vcpkg_installed\x64-windows-static\x64-windows\bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -142,13 +142,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="protocol-buffers\build-cpp\ReaderRequest.pb.cc" />
+    <ClCompile Include="ReaderRequest.cpp" />
     <ClCompile Include="SocketListener.cpp" />
     <ClCompile Include="winscard-pcsc.cpp" />
     <ClCompile Include="WinscardDriver.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="protocol-buffers\build-cpp\ReaderRequest.pb.h" />
+    <ClInclude Include="ReaderRequest.hpp" />
     <ClInclude Include="SocketListener.hpp" />
     <ClInclude Include="WinscardDriver.hpp" />
   </ItemGroup>
