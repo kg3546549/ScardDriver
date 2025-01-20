@@ -421,6 +421,14 @@ int main(void) {
 		std::cerr << e.what() << std::endl;
 	}
 	
+	while (true) {
+		SocketListener SL = SocketListener();
+		if (SL.InitListener() == -1) {
+			Sleep(1000);
+			continue;
+		}
+		
+		SL.StartListener();
+	}
 	
-
 }

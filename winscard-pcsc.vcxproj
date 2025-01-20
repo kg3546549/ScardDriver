@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir);$(SolutionDir)\protocol-buffers\build-cpp;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir);$(SolutionDir)vcpkg_installed\x64-windows-static\x64-windows-static\include;$(IncludePath)</IncludePath>
     <PublicIncludeDirectories>$(PublicIncludeDirectories)</PublicIncludeDirectories>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClCompile Include="ReaderRequest.cpp" />
     <ClCompile Include="SocketListener.cpp" />
+    <ClCompile Include="TcpServer.cpp" />
     <ClCompile Include="winscard-pcsc.cpp" />
     <ClCompile Include="WinscardDriver.cpp" />
   </ItemGroup>
