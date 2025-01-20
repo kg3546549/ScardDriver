@@ -1,3 +1,5 @@
+#pragma once
+
 #include <winsock2.h>
 #include <windows.h>
 
@@ -11,6 +13,8 @@
 
 #include <nlohmann/json.hpp>
 
+#include "ReaderRequest.hpp"
+
 using json = nlohmann::json;
 
 class SocketListener {
@@ -20,12 +24,17 @@ private :
 	sockaddr_in serverAddr, clientAddr;
 	int clientAddrSize = sizeof(clientAddr);
 	
+	std::queue<std::string> processQueue;
+	std::mutex procQueMutex;
+
 	std::queue<std::string> transmitQueue;
-	std::mutex queueMutex;
+	std::mutex transQueMutex;
+
 	std::condition_variable cv;
 	WSADATA wsaData;
 
 	void Receiver();
+	void Processor();
 	void Transmitter();
 
 public:

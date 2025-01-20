@@ -65,8 +65,8 @@ void SocketListener::Receiver() {
 		if (recvDataLen <= 0) {
 			std::cerr << "Connection closed or error during receive." << std::endl;
 
-			std::lock_guard<std::mutex> lock(queueMutex);
-			transmitQueue.push("CLOSE-END");
+			std::lock_guard<std::mutex> lock(procQueMutex);
+			processQueue.push("CLOSE-END");
 
 			break;
 		}
@@ -75,31 +75,85 @@ void SocketListener::Receiver() {
 
 		//BlaBla
 		std::string receivedData(buffer, recvDataLen);
-		std::cout << "received : " << receivedData << std::endl;
-
-		std::lock_guard<std::mutex> lock(queueMutex);
-		transmitQueue.push(receivedData);
-
-		cv.notify_one();
+		std::cout << "[Receiver] : " << receivedData << std::endl;
+		{
+			std::lock_guard<std::mutex> lock(procQueMutex);
+			processQueue.push(receivedData);
+		}
+		cv.notify_all();
 	}
 
 	closesocket(this->clientSocket);
 }
 
-void SocketListener::Transmitter() {
-	std::cout << "[Transmitter Started!]" << std::endl;
+void SocketListener::Processor() {
+	std::cout << "[Processor Started!]" << std::endl;
 
 	while (true) {
-		std::unique_lock<std::mutex> lock(queueMutex);
+		std::unique_lock<std::mutex> lock1(procQueMutex);
 
+		
 		cv.wait(
-			lock, 
-			[this] { 
-				return !this->transmitQueue.empty(); 
+			lock1, 
+			[this] { //이 람다식이 False를 리턴하면 Mutex lock1이 해제됨
+				return !this->processQueue.empty(); 
 			}
 		);
 
-		while ( !( this->transmitQueue.empty() ) ) {
+		while ( !( this->processQueue.empty() ) ) {
+			std::string data = (this->processQueue.front());
+			this->processQueue.pop();
+
+			if (data == "CLOSE-END") {
+				closesocket(this->serverSocket);
+				return;
+			}
+
+
+			/*
+			* TODO : Processor Thread
+			Processor Thread에 들어오는 string json 데이터를 파싱하여
+			
+			Request(요청) 객체를 만들고
+			Request객체를 WinscardDriver에 던지는 인터페이스 함수를 하나 더 만들어서
+			Winscard를 조작한 후에 해당 결과를 받아서
+			
+			Response(응답) 객체를 만든 후에
+			Transmit Thread에 전송
+			*/
+			std::cout << "[Processor] - Process data: " << data << std::endl;
+
+			json j = json::parse(data);
+			
+			j["sender"] = Protocol::Sender::Response;
+			j["data"] = { "Process Sucess" };
+
+			{
+				std::lock_guard<std::mutex> transLock(transQueMutex);
+				transmitQueue.push( j.dump());
+			}
+
+			cv.notify_all();
+		}
+	}
+
+}
+
+void SocketListener::Transmitter() {
+
+	std::cout << "[Transmitter Started!]" << std::endl;
+
+	while (true) {
+		std::unique_lock<std::mutex> lock1(transQueMutex);
+
+		cv.wait(
+			lock1,
+			[this] {
+				return !this->transmitQueue.empty();
+			}
+		);
+
+		while (!(this->transmitQueue.empty())) {
 			std::string data = (this->transmitQueue.front());
 			this->transmitQueue.pop();
 
@@ -108,7 +162,7 @@ void SocketListener::Transmitter() {
 				return;
 			}
 
-			std::cout << "[Transmitter] - Transmitting data: " << data << std::endl;
+			std::cout << "[Transmittor] - Transmitting data: " << data << std::endl;
 
 			send(this->clientSocket, data.c_str(), data.size(), 0);
 		}
@@ -122,7 +176,8 @@ LONG SocketListener::StartListener() {
 	std::cout << "==Start Socket Listener==" << std::endl;
 
 	std::thread recvTask( &SocketListener::Receiver, this);
-	std::thread transmitTask( &SocketListener::Transmitter,this);
+	std::thread procTask(&SocketListener::Processor, this);
+	std::thread transmitTask(&SocketListener::Transmitter, this);
 	
 	recvTask.join();
 	transmitTask.join();

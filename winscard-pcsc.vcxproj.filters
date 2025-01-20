@@ -38,6 +38,12 @@
     <ClInclude Include="ReaderRequest.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="winscard-pcsc.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="common.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="vcpkg.json" />

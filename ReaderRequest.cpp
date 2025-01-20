@@ -2,8 +2,6 @@
 
 using namespace Protocol;
 
-
-
 ReaderRequest::ReaderRequest(Command c, Sender s, int mc, Result r, int dl, std::vector<std::string> data)
 : cmd(c), sender(s), msgCnt(mc), result(r), dataLength(dl), data{ data } {
 	

@@ -148,8 +148,10 @@
     <ClCompile Include="WinscardDriver.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="common.hpp" />
     <ClInclude Include="ReaderRequest.hpp" />
     <ClInclude Include="SocketListener.hpp" />
+    <ClInclude Include="winscard-pcsc.hpp" />
     <ClInclude Include="WinscardDriver.hpp" />
   </ItemGroup>
   <ItemGroup>
