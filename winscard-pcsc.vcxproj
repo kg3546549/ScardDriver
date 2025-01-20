@@ -144,7 +144,6 @@
   <ItemGroup>
     <ClCompile Include="ReaderRequest.cpp" />
     <ClCompile Include="SocketListener.cpp" />
-    <ClCompile Include="TcpServer.cpp" />
     <ClCompile Include="winscard-pcsc.cpp" />
     <ClCompile Include="WinscardDriver.cpp" />
   </ItemGroup>
