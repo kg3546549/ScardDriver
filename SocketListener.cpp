@@ -64,14 +64,14 @@ void SocketListener::Receiver() {
 
 		if (recvDataLen <= 0) {
 			std::cerr << "Connection closed or error during receive." << std::endl;
-
-			std::lock_guard<std::mutex> lock(procQueMutex);
-			processQueue.push("CLOSE-END");
-
-			break;
+			{
+				std::lock_guard<std::mutex> lock(procQueMutex);
+				processQueue.push("CLOSE-END");
+			}
+			cv.notify_all();
+			std::cerr << "Receiver Thread End" << std::endl;
+			return;
 		}
-
-		
 
 		//BlaBla
 		std::string receivedData(buffer, recvDataLen);
@@ -105,7 +105,12 @@ void SocketListener::Processor() {
 			this->processQueue.pop();
 
 			if (data == "CLOSE-END") {
-				closesocket(this->serverSocket);
+				{
+					std::lock_guard<std::mutex> transLock(transQueMutex);
+					transmitQueue.push("CLOSE-END");
+				}
+				std::cerr << "Processor Thread End" << std::endl;
+				cv.notify_all();
 				return;
 			}
 
@@ -123,14 +128,36 @@ void SocketListener::Processor() {
 			*/
 			std::cout << "[Processor] - Process data: " << data << std::endl;
 
-			json j = json::parse(data);
+			json requestJson = json::parse(data);
 			
-			j["sender"] = Protocol::Sender::Response;
-			j["data"] = { "Process Sucess" };
+			Protocol::ReaderRequest * requestData;
+
+			try {
+				requestData = new Protocol::ReaderRequest(requestJson);
+			}
+			catch (std::exception& e) {
+				std::cerr << "[Processor] - Invalid Json Type" << std::endl;
+
+				requestJson["result"] = Protocol::Result::Default_Fail;
+
+				{
+					std::lock_guard<std::mutex> transLock(transQueMutex);
+					transmitQueue.push(requestJson.dump());
+				}
+				continue;
+			}
+			
+			Protocol::ReaderRequest responseData(requestData);
+			responseData.setSender(Protocol::Response);
+			
+			LONG result = ProcessWinscard(&responseData);
+			
+			/*requestJson["sender"] = Protocol::Sender::Response;
+			requestJson["data"] = { "Process Sucess" };*/
 
 			{
 				std::lock_guard<std::mutex> transLock(transQueMutex);
-				transmitQueue.push( j.dump());
+				transmitQueue.push(responseData.toJson().dump());
 			}
 
 			cv.notify_all();
@@ -159,6 +186,7 @@ void SocketListener::Transmitter() {
 
 			if (data == "CLOSE-END") {
 				closesocket(this->serverSocket);
+				std::cerr << "Transmit Thread End" << std::endl;
 				return;
 			}
 
@@ -180,6 +208,7 @@ LONG SocketListener::StartListener() {
 	std::thread transmitTask(&SocketListener::Transmitter, this);
 	
 	recvTask.join();
+	procTask.join();
 	transmitTask.join();
 
 	std::cout << "==Close All Thread!==" << std::endl;

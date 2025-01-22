@@ -24,6 +24,15 @@ ReaderRequest::~ReaderRequest()
 {
 }
 
+ReaderRequest::ReaderRequest(ReaderRequest* RR) {
+	cmd = RR->getCmd();
+	sender = RR->getSender();
+	msgCnt = RR->getMsgCnt();
+	result = RR->getResult();
+	dataLength = RR->getDataLength();
+	data = RR->getData();
+}
+
 json ReaderRequest::toJson() {
 	json j;
 	j["cmd"] = this->cmd;
@@ -35,5 +44,6 @@ json ReaderRequest::toJson() {
 
 	return j;
 }
+
 
 

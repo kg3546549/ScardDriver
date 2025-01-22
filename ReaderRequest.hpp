@@ -52,6 +52,8 @@ namespace Protocol {
 	public:
 		ReaderRequest(Command cmd, Sender sender, int msgCnt, Result result, int dataLength, std::vector<std::string> data);
 
+		ReaderRequest(ReaderRequest *RR);
+
 		ReaderRequest(json j);
 
 		~ReaderRequest();
@@ -74,5 +76,52 @@ namespace Protocol {
 			os << "]]";
 			return os;
 		}
+
+		/* Getters */
+		Command getCmd() {
+			return cmd;
+		}
+		Sender getSender() {
+			return sender;
+		}
+		int getMsgCnt() {
+			return msgCnt;
+		}
+		Result getResult() {
+			return result;
+		}
+		int getDataLength() {
+			return dataLength;
+		}
+		std::vector<std::string>* getPtrData() {
+			return &data;
+		}
+
+		std::vector<std::string> getData() {
+			return data;
+		}
+
+
+		/* Setters */
+		void setCmd(Command command) {
+			this->cmd = command;
+		}
+		void setSender(Sender s) {
+			this->sender = s;
+		}
+		void setMsgCnt(int mc) {
+			this->msgCnt = mc;
+		}
+		void setResult(Result r) {
+			this->result = r;
+		}
+		void setDataLength(int dl) {
+			this->dataLength = dl;
+		}
+		void setData(std::vector<std::string> d) {
+			this->data = d;
+		}
+
 	};
+
 }

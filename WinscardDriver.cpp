@@ -24,6 +24,8 @@ LONG WinscardDriver::SCard_ListReaders() {
         return ret;
     }
 
+    readerList.clear();
+
     pReader = readers;
     while ('\0' != *pReader)
     {
@@ -37,8 +39,12 @@ LONG WinscardDriver::SCard_ListReaders() {
     return SCARD_S_SUCCESS;
 }
 
-std::vector<std::wstring> WinscardDriver::getReaderList() {
+std::vector<std::wstring> WinscardDriver::getWReaderList() {
     return this->readerList;
+}
+
+std::vector<std::string> WinscardDriver::getReaderList() {
+    return WSVtoSV(this->readerList);
 }
 
 int WinscardDriver::getReaderNum() {

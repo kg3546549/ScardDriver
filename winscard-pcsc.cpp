@@ -2,6 +2,9 @@
 
 using json = nlohmann::json;
 
+WinscardDriver& WD = WinscardDriver::getIncetance();
+
+#if 1
 int main(void) {
 
 	while (true) {
@@ -15,6 +18,7 @@ int main(void) {
 	}
 
 }
+#endif
 
 #if 0
 int main()
@@ -196,9 +200,9 @@ int main()
 #endif
 
 #if 0
-int WinscardDriverTestMain(void) {
+int main(void) {
 
-	WinscardDriver& WD = WinscardDriver::getIncetance();
+	//WinscardDriver& WD = WinscardDriver::getIncetance();
 	
 	LONG result;
 
@@ -214,13 +218,13 @@ int WinscardDriverTestMain(void) {
 		return 0;
 	}
 	
-	std::vector<std::wstring> readerList = WD.getReaderList();
+	std::vector<std::wstring> readerList = WD.getWReaderList();
 
 	for (auto reader : readerList) {
 		std::wcout << "[Reader] : " << reader << std::endl;
 	}
 
-	result = WD.SCard_Connect(1);
+	result = WD.SCard_Connect(0);
 	if (result != SCARD_S_SUCCESS) {
 		std::cout << "!ERR : " << WinscardDriver::errToString(result) << std::endl;
 		return 0;
@@ -250,7 +254,7 @@ int WinscardDriverTestMain(void) {
 		}
 
 		resLen = sizeof(response);
-		ret = WD.authentication(i, 'A', 0, response, &resLen);
+		ret = WD.authentication(i, 'A', 0, response, &resLen); 
 		if (ret == -1) {
 			printf("[Authentication Block Err %d] \n", i);
 			continue;
@@ -391,8 +395,6 @@ int protobuf_main() {
 #endif
 }
 #endif
-
-
 
 #if 0
 int jsonTestMain(void) {

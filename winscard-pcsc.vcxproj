@@ -144,15 +144,19 @@
   <ItemGroup>
     <ClCompile Include="ReaderRequest.cpp" />
     <ClCompile Include="SocketListener.cpp" />
+    <ClCompile Include="utils.cpp" />
     <ClCompile Include="winscard-pcsc.cpp" />
     <ClCompile Include="WinscardDriver.cpp" />
+    <ClCompile Include="WinscardInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.hpp" />
     <ClInclude Include="ReaderRequest.hpp" />
     <ClInclude Include="SocketListener.hpp" />
+    <ClInclude Include="utils.hpp" />
     <ClInclude Include="winscard-pcsc.hpp" />
     <ClInclude Include="WinscardDriver.hpp" />
+    <ClInclude Include="WinscardInterface.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="vcpkg.json" />

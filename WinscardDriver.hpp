@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 
+#include "utils.hpp"
+
 enum ConnectStatus {
     Connected = 1,
     Disconnected = 0
@@ -49,7 +51,8 @@ public:
     LONG SCard_EstablishContext(DWORD dwScope);
     LONG SCard_RealeaseContext();
     LONG SCard_ListReaders();
-    std::vector<std::wstring> getReaderList();
+    std::vector<std::wstring> getWReaderList();
+    std::vector<std::string> getReaderList();
     int getReaderNum();
     LONG SCard_Connect(int readerNum);
     LONG SCard_Disconnect();

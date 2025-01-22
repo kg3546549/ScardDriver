@@ -14,6 +14,7 @@
 #include <nlohmann/json.hpp>
 
 #include "ReaderRequest.hpp"
+#include "WinscardInterface.hpp"
 
 using json = nlohmann::json;
 
