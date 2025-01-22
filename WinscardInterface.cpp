@@ -170,6 +170,7 @@ LONG ProcessWinscard(Protocol::ReaderRequest * data) {
 			uint8_t resBuf[256];
 			DWORD resLen = sizeof(resBuf);
 
+			//TODO : Authentication Block
 			result = WD.authentication(i, vstr[1].c_str()[0], 0, resBuf, &resLen);
 			if (result == -1) {
 				printf("[Authentication Block Err %d] \n", i);
@@ -197,6 +198,8 @@ LONG ProcessWinscard(Protocol::ReaderRequest * data) {
 			if (result == -1) {
 				printf("[Read Block Err %d]\n", i);
 				data->setResult(Protocol::Default_Fail);
+				data->setDataLength(1);
+				data->getPtrData()->push_back(bytesToHexString(resBuf, resLen));
 				return -1;
 			}
 

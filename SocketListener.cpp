@@ -127,8 +127,14 @@ void SocketListener::Processor() {
 			Transmit Thread¿¡ Àü¼Û
 			*/
 			std::cout << "[Processor] - Process data: " << data << std::endl;
-
-			json requestJson = json::parse(data);
+			
+			json requestJson;
+			try {
+				requestJson = json::parse(data);
+			}
+			catch (std::exception e) {
+				std::cerr << e.what() << std::endl;
+			}
 			
 			Protocol::ReaderRequest * requestData;
 
