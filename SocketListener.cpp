@@ -116,7 +116,7 @@ void SocketListener::Processor() {
 
 
 			/*
-			* TODO : Processor Thread
+			* TODO-Done : Processor Thread
 			Processor Thread에 들어오는 string json 데이터를 파싱하여
 			
 			Request(요청) 객체를 만들고

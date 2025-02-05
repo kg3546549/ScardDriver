@@ -12,6 +12,7 @@ namespace Protocol {
 	enum Command {
 		Cmd_Err = 0,
 		Cmd_SCard_Establish_Context = 101,
+		Cmd_SCard_Release_Context = 1001,
 		Cmd_SCard_Reader_List = 102,
 		Cmd_SCard_Connect_Card = 103,
 		Cmd_SCard_Disconnect_Card = 104, //Return Default Data
@@ -47,10 +48,11 @@ namespace Protocol {
 		Result result = Result::Default_Fail;
 		int dataLength = 0;
 		std::vector<std::string> data;
+		std::string uuid;
 	
 
 	public:
-		ReaderRequest(Command cmd, Sender sender, int msgCnt, Result result, int dataLength, std::vector<std::string> data);
+		ReaderRequest(Command cmd, Sender sender, int msgCnt, Result result, int dataLength, std::vector<std::string> data, std::string u);
 
 		ReaderRequest(ReaderRequest *RR);
 
@@ -99,6 +101,10 @@ namespace Protocol {
 
 		std::vector<std::string> getData() {
 			return data;
+		}
+
+		std::string getUUID() {
+			return uuid;
 		}
 
 

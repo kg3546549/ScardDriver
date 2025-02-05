@@ -53,7 +53,10 @@ LONG ProcessWinscard(Protocol::ReaderRequest * data) {
 			//TODO : Reader Number Select 
 			result = WD.SCard_Connect(idx);
 			if (result != SCARD_S_SUCCESS) {
-				std::cout << "!ERR-SCard Connect : " << WinscardDriver::errToString(result) << std::endl;
+				auto err = WinscardDriver::errToString(result);
+				std::cout << "!ERR-SCard Connect : " << err << std::endl;
+				data->setDataLength(1);
+				data->getPtrData()->push_back(err);
 				data->setResult(Protocol::Default_Fail);
 				return -1;
 			}
