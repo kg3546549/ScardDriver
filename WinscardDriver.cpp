@@ -108,7 +108,7 @@ LONG WinscardDriver::getSCardUID(uint8_t * UID) {
         &resLen
     );
 
-    if (result == SCARD_S_SUCCESS) {
+    if (result == SCARD_S_SUCCESS && (resLen) != 0) {
         /*
         std::cout << "UID: ";
         for (DWORD i = 0; i < dwResponseLength; ++i) {
@@ -155,7 +155,7 @@ LONG WinscardDriver::loadKey(uint8_t * key, uint8_t keyNum, uint8_t* resBuf, DWO
         bufLen
     );
 
-    if (result == SCARD_S_SUCCESS) {
+    if (result == SCARD_S_SUCCESS && (*bufLen) != 0 ) {
 #ifdef __DEBUG__ 
         std::cout << "Load Key Success" << std::endl;
         printf("    ¦¦ Response Data : ");
@@ -206,7 +206,7 @@ LONG WinscardDriver::authentication(int blkNum, char keyType, uint8_t keyNum, ui
         bufLen
     );
 
-    if (result == SCARD_S_SUCCESS) {
+    if (result == SCARD_S_SUCCESS && (*bufLen) != 0) {
         if (resBuf[(*bufLen) - 2] == 0x63 && resBuf[(*bufLen) - 1] == 0x00)
             return -1;
         
@@ -234,7 +234,7 @@ LONG WinscardDriver::readBinaryBlock(int blkNum, uint8_t * resBuf, DWORD *bufLen
         bufLen
     );
 
-    if (result == SCARD_S_SUCCESS) {
+    if (result == SCARD_S_SUCCESS && (*bufLen) != 0) {
 
 
         if (resBuf[0] == 0x63 && resBuf[1] == 0x00) {

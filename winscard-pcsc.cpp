@@ -103,7 +103,7 @@ int main()
     DWORD dwResponseLength = sizeof(response);
 
     result = SCardTransmit(hCard, pciProtocol, apduCommand, sizeof(apduCommand), nullptr, response, &dwResponseLength);
-    if (result == SCARD_S_SUCCESS) {
+    if (result == SCARD_S_SUCCESS && (*bufLen) != 0) {
         std::cout << "UID: ";
         for (DWORD i = 0; i < dwResponseLength; ++i) {
             printf("%02X ", response[i]);
@@ -128,7 +128,7 @@ int main()
         
 
     result = SCardTransmit(hCard, pciProtocol, loadAuthenticationKeysCmd, sizeof(loadAuthenticationKeysCmd), nullptr, response, &dwResponseLength);
-    if (result == SCARD_S_SUCCESS) {
+    if (result == SCARD_S_SUCCESS && (*bufLen) != 0) {
         std::cout << "Load Key Success" << std::endl;
         printf("    └ Response Data : ");
         for (int cnt = 0; cnt < dwResponseLength; cnt++) {
@@ -145,7 +145,7 @@ int main()
         printf("[Read %02d Block Start]\n", i);
         unsigned char authenticationCmd[] = { 0xff,0x88, 0x00, i,0x60,0x00 };
         result = SCardTransmit(hCard, pciProtocol, authenticationCmd, sizeof(authenticationCmd), nullptr, response, &dwResponseLength);
-        if (result == SCARD_S_SUCCESS) {
+        if (result == SCARD_S_SUCCESS && (*bufLen) != 0) {
             std::cout << "  └ Authentication Block " << i << std::endl;
             printf("    └ Response Data : ");
             for (int cnt = 0; cnt < dwResponseLength; cnt++) {
@@ -167,7 +167,7 @@ int main()
         dwResponseLength = sizeof(response);
         unsigned char readBinaryBlocks[] = {0xff, 0xb0, 0x00, i, 0x10};
         result = SCardTransmit(hCard, pciProtocol, readBinaryBlocks, sizeof(readBinaryBlocks), nullptr, response, &dwResponseLength);
-        if (result == SCARD_S_SUCCESS) {
+        if (result == SCARD_S_SUCCESS && (*bufLen) != 0) {
             std::cout << "  └ Read Block " << i << " Transmit Result" << std::endl;
             printf("  └ Read Data (%d) : ", dwResponseLength);
             for (int cnt = 0; cnt < dwResponseLength; cnt++) {
