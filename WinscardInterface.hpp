@@ -3,6 +3,8 @@
 #include <windows.h>
 #include <winscard.h>
 
+#include <string>
+
 #include "ReaderRequest.hpp"
 #include "WinscardDriver.hpp"
 

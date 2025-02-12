@@ -137,26 +137,17 @@ LONG ProcessWinscard(Protocol::ReaderRequest * data) {
 		case Protocol::Cmd_MI_Load_Key : {
 			std::vector<std::string> vstr = data->getData();
 
-			//Key Type Check
-			if (vstr[0] != "A" && vstr[0] != "B") {
-				std::cout << "!ERR-MI Key Load Invalid Key Type " 
-					<< " : " << vstr[0]
-					<< std::endl;
-				data->setResult(Protocol::Default_Fail);
-				return -1;
-			}
-
-			if (vstr[1].length() != 12) {
+			if (vstr[0].length() != 12) {
 				std::cout << "!ERR-MI Key Load Invalid Key Length "
-					<< " : " << vstr[1].size()
+					<< " : " << vstr[0].size()
 					<< std::endl;
 				data->setResult(Protocol::Default_Fail);
 				return -1;
 			}
 
-			std::vector<uint8_t> key = hexStringToByteArray(vstr[1]);
+			std::vector<uint8_t> key = hexStringToByteArray(vstr[0]);
 
-			std::vector<uint8_t> vRes = hexStringToByteArray(vstr[1]);
+			//std::vector<uint8_t> vRes = hexStringToByteArray(vstr[1]);
 			uint8_t resBuf[256];
 			DWORD resLen = sizeof(resBuf);
 
@@ -188,7 +179,8 @@ LONG ProcessWinscard(Protocol::ReaderRequest * data) {
 				return -1;
 			}
 
-			int i = vstr[0][0]-0x30;
+			//int i = vstr[0][0]-0x30;
+			int i = std::stoi( vstr[0] );
 
 			uint8_t resBuf[256];
 			DWORD resLen = sizeof(resBuf);
@@ -215,7 +207,7 @@ LONG ProcessWinscard(Protocol::ReaderRequest * data) {
 			uint8_t resBuf[256];
 			DWORD resLen = sizeof(resBuf);
 
-			int i = vstr[0][0] - 0x30;
+			int i = std::stoi(vstr[0]);
 
 			result = WD.readBinaryBlock(i, resBuf, &resLen);
 			if (result == -1) {
