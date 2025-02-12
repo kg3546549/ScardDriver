@@ -86,8 +86,28 @@ LONG ProcessWinscard(Protocol::ReaderRequest * data) {
 		break;
 
 		case Protocol::Cmd_SCard_Transmit : {
-			data->setResult(Protocol::Default_Fail);
-			return -1;
+			std::vector<std::string> vstr = data->getData();
+
+			std::vector<uint8_t> cmd = hexStringToByteArray(vstr[0]);
+			uint8_t resBuf[256];
+			DWORD resLen = sizeof(resBuf);
+
+			DWORD reqLen = cmd.size();
+			result = WD.SCard_Transmit(resBuf, &resLen, cmd.data(), &reqLen);
+			
+			if (result != SCARD_S_SUCCESS) {
+				data->setResult(Protocol::Default_Fail);
+				return -1;
+			}
+			
+			data->setResult(Protocol::Success);
+			
+			std::string resData = bytesToHexString(resBuf, resLen);
+
+			data->getPtrData()->push_back(resData);
+			data->setDataLength(data->getData().size());
+			return 1;
+
 		}
 		break;
 
@@ -182,7 +202,7 @@ LONG ProcessWinscard(Protocol::ReaderRequest * data) {
 				data->getPtrData()->push_back(bytesToHexString(resBuf, resLen));
 				return -1;
 			}
-
+				
 			data->setResult(Protocol::Success);
 			data->setDataLength(1);
 			data->getPtrData()->push_back(bytesToHexString(resBuf, resLen));

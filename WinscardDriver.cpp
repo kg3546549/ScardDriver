@@ -81,6 +81,27 @@ LONG WinscardDriver::SCard_Disconnect() {
     return SCardDisconnect(hCard, SCARD_LEAVE_CARD);
 }
 
+LONG WinscardDriver::SCard_getATR(uint8_t readerNum, BYTE * pATR, DWORD * atrLen) {
+
+    if (readerNum >= readerList.size()) return -1;
+
+    DWORD dwReaderLen = readerList[readerNum].length();
+    wchar_t * szReaderName = new wchar_t[dwReaderLen];
+
+    DWORD dwState, dwProtocol;
+
+    wcscpy_s(szReaderName, dwReaderLen, readerList[readerNum].c_str());
+
+    LONG ret = SCardStatus(
+        hCard,
+        szReaderName, &dwReaderLen,
+        &dwState, &dwProtocol,
+        pATR, atrLen
+    );
+
+    return ret;
+}
+
 
 //Applications
 
@@ -128,6 +149,33 @@ LONG WinscardDriver::getSCardUID(uint8_t * UID) {
     }
 
     //std::cerr << "Failed to transmit APDU: " << result << std::endl;
+    return result;
+}
+
+LONG WinscardDriver::SCard_Transmit(uint8_t* resBuf, DWORD* bufLen, uint8_t * sendData, DWORD* sendLen) {
+    const SCARD_IO_REQUEST* pciProtocol = (dwActiveProtocol == SCARD_PROTOCOL_T0) ? SCARD_PCI_T0 : SCARD_PCI_T1;
+
+    LONG result = SCardTransmit(
+        hCard,
+        pciProtocol,
+        sendData,
+        *sendLen,
+        nullptr,
+        resBuf,
+        bufLen
+    );
+
+    if (result == SCARD_S_SUCCESS && (*bufLen) != 0) {
+#ifdef __DEBUG__ 
+        std::cout << "Load Key Success" << std::endl;
+        printf("    ¦¦ Response Data : ");
+        for (int cnt = 0; cnt < dwResponseLength; cnt++) {
+            printf("%02x ", resBuf[cnt]);
+        }
+        printf("\n");
+#endif
+    }
+
     return result;
 }
 
