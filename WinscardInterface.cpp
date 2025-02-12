@@ -85,13 +85,37 @@ LONG ProcessWinscard(Protocol::ReaderRequest * data) {
 		}
 		break;
 
+		case Protocol::Cmd_SCard_GetATR: {
+
+			BYTE atr[256];
+			DWORD atrLen = 256;
+
+			result = WD.SCard_getATR(0, atr, &atrLen);
+			
+			if (result != SCARD_S_SUCCESS) {
+				data->setResult(Protocol::Default_Fail);
+				return -1;
+			}
+
+			std::string ATR = bytesToHexString(atr, atrLen);
+
+			data->setResult(Protocol::Success);
+			data->getPtrData()->push_back(ATR);
+			data->setDataLength(data->getPtrData()->size());
+
+			return 1;
+		}
+		break;
+
 		case Protocol::Cmd_SCard_Transmit : {
 			std::vector<std::string> vstr = data->getData();
-
+			
+			if (vstr.size() == 0) return -1;
 			std::vector<uint8_t> cmd = hexStringToByteArray(vstr[0]);
 			uint8_t resBuf[256];
 			DWORD resLen = sizeof(resBuf);
 
+			//TODO : cmd 그대로 전송이 아닌 memcpy 필요한듯 ㅇㅇ
 			DWORD reqLen = cmd.size();
 			result = WD.SCard_Transmit(resBuf, &resLen, cmd.data(), &reqLen);
 			

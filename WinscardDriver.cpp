@@ -85,13 +85,12 @@ LONG WinscardDriver::SCard_getATR(uint8_t readerNum, BYTE * pATR, DWORD * atrLen
 
     if (readerNum >= readerList.size()) return -1;
 
-    DWORD dwReaderLen = readerList[readerNum].length();
-    wchar_t * szReaderName = new wchar_t[dwReaderLen];
-
-    DWORD dwState, dwProtocol;
-
+    DWORD dwReaderLen = 256;
+    wchar_t szReaderName[256];
+    memset(szReaderName, '\0', 256);
     wcscpy_s(szReaderName, dwReaderLen, readerList[readerNum].c_str());
 
+    DWORD dwState, dwProtocol;
     LONG ret = SCardStatus(
         hCard,
         szReaderName, &dwReaderLen,
