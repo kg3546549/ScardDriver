@@ -151,14 +151,14 @@ LONG WinscardDriver::getSCardUID(uint8_t * UID) {
     return result;
 }
 
-LONG WinscardDriver::SCard_Transmit(uint8_t* resBuf, DWORD* bufLen, uint8_t * sendData, DWORD* sendLen) {
+LONG WinscardDriver::SCard_Transmit(uint8_t* resBuf, DWORD* bufLen, uint8_t * sendData, DWORD sendLen) {
     const SCARD_IO_REQUEST* pciProtocol = (dwActiveProtocol == SCARD_PROTOCOL_T0) ? SCARD_PCI_T0 : SCARD_PCI_T1;
 
     LONG result = SCardTransmit(
         hCard,
         pciProtocol,
         sendData,
-        *sendLen,
+        sendLen,
         nullptr,
         resBuf,
         bufLen
@@ -166,12 +166,7 @@ LONG WinscardDriver::SCard_Transmit(uint8_t* resBuf, DWORD* bufLen, uint8_t * se
 
     if (result == SCARD_S_SUCCESS && (*bufLen) != 0) {
 #ifdef __DEBUG__ 
-        std::cout << "Load Key Success" << std::endl;
-        printf("    ¦¦ Response Data : ");
-        for (int cnt = 0; cnt < dwResponseLength; cnt++) {
-            printf("%02x ", resBuf[cnt]);
-        }
-        printf("\n");
+
 #endif
     }
 

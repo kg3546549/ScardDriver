@@ -111,13 +111,17 @@ LONG ProcessWinscard(Protocol::ReaderRequest * data) {
 			std::vector<std::string> vstr = data->getData();
 			
 			if (vstr.size() == 0) return -1;
-			std::vector<uint8_t> cmd = hexStringToByteArray(vstr[0]);
+			
 			uint8_t resBuf[256];
 			DWORD resLen = sizeof(resBuf);
 
 			//TODO : cmd 그대로 전송이 아닌 memcpy 필요한듯 ㅇㅇ
+			std::vector<uint8_t> cmd = hexStringToByteArray(vstr[0]);
 			DWORD reqLen = cmd.size();
-			result = WD.SCard_Transmit(resBuf, &resLen, cmd.data(), &reqLen);
+			uint8_t * reqData = new uint8_t[reqLen];
+			memcpy_s(reqData, reqLen, cmd.data(), reqLen);
+			
+			result = WD.SCard_Transmit(resBuf, &resLen, reqData, reqLen);
 			
 			if (result != SCARD_S_SUCCESS) {
 				data->setResult(Protocol::Default_Fail);

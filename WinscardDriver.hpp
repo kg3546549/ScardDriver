@@ -59,7 +59,7 @@ public:
 
     LONG SCard_getATR(uint8_t readerNum, BYTE* pATR, DWORD* atrLen);
 
-    LONG SCard_Transmit(uint8_t * resBuf, DWORD* bufLen, uint8_t * sendData, DWORD* sendLen);
+    LONG SCard_Transmit(uint8_t * resBuf, DWORD* bufLen, uint8_t * sendData, DWORD sendLen);
 
     /*Application Functions*/
 
