@@ -26,7 +26,7 @@ Receiver에서는 socket으로 들어오는 JSON 데이터를 수신하여 올�
 ### Processor : 스마트카드 판독기를 Control
 `ProcessWinscard() - WinscardDriver`를 이용하여 스마트카드 판독기를 조작.
 
-자세한 스마트카드 판독기 조작에 관한 내용은 하기 [Application Protocols](#application-protocols) 항목을 참고.
+자세한 스마트카드 판독기 조작에 관한 내용은 하기 [Protocol List](#protocol-list) 항목을 참고.
 
 스마트카드 판독기에서 받은 응답을 Transmitter에 전달
 
